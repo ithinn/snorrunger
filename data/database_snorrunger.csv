@@ -1,0 +1,4 @@
+﻿name;cathegory_main;cathegory_under;age;Color;size;quality1;quality2;quality3;price;URL;ingress;description
+Robust;Bukser;Fritidsbukse;1;['green', 'red'];[86, 92, 104];vannavstøtende;vindtett;;255;./images/img1;Dette er en nydelig bukse som alle andre bukser;
+Sisotind;Bukser;Ullbukse;1;[red];[86,92, 104, 110, 116, 122];ull;;;289;;Denne buksen er i deilig ull;
+Dalfonna;Bukser;Vattert;1;[purple, green, red, blue];[92, 104, 110, 122];vindtett;vannavstøtende;strikk;299;;Denne buksen er vindtett og passer perfekt på kalde høstdager.;
