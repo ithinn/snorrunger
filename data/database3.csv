@@ -1,0 +1,7 @@
+﻿name,cathegory_main,cathegory_under,age,Color,size,quality1,quality2,quality3,price,URL,URL2,ingress,description
+Robust,Bukser,Fritidsbukse,1,['green' 'red'],[86 92 104],vannavstøtende,vindtett,,255,['../images/dalfonna1' '../images/dalfonna2' '../images/dalfonna3'],..images/dirdalnes',Dette er en nydelig bukse som alle andre bukser,
+Sisotind,Bukser,Ullbukse,2,['red'],[86 92 104 110 116 122],ull,,,289,..images/dirdalnes',,Denne buksen er i deilig ull,
+Dalfonna,Bukser,Vattert,1,['purple' 'green' 'red' 'blue'],[92 104 110 122],vindtett,vannavstøtende,strikk,299,,,Denne buksen er vindtett og passer perfekt på kalde høstdager.,
+Ribast,Jakker,Dunjakke,1,['green' 'red'],[86 92 104],vannavstøtende,vindtett,,255,['../images/dalfonna1' '../images/dalfonna2' '../images/dalfonna3'],,Dette er en nydelig jakke som alle andre bukser,
+Tosifin,Jakker,Skalljakke,2,['red'],[8692 104 110 116 122],ull,,,289,,,Denne jakken er i deilig ull,
+Snørrflekk,Jakker,Ulljakke,1,['purple' 'green' 'red' 'blue'],[92 104 110 122],vindtett,vannavstøtende,strikk,299,,,Denne jakken er vindtett og passer perfekt på kalde høstdager.,
