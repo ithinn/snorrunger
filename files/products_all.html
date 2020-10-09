@@ -8,11 +8,44 @@
     <link rel="stylesheet" href="../style/typhography.css">
     <link rel="stylesheet" href="../style/components.css">
     <link rel="stylesheet" href="../style/header_nav_footer.css">
-    <link rel="stylesheet" href="../style/product.css">
+    <link rel="stylesheet" href="../style/products_all.css">
+    <script src="../script/products_all.js" defer></script>
 </head>
 <body>
+    <header>
+        <div id="header_top">
+            <img id="logo" src="../images/icons/logo.png" alt="Snørrungers logo">
+            <div id="symbols">
+                <img class="icon" id="search" src="../images/icons/search_symbol.png" alt="Lenke til internsøk">
+                <img class="icon" id="fav" src="../images/icons/heart_empty.png" alt="Lenke til merkede produkter">
+                <img class="icon" id="chart" src="../images/icons/chart.png" alt="Lenke til internsøk">
+                <div id="number_items"></div>
+            </div>
+        </div>
+        
+        <nav>
+            <ul>
+                <li class="nav_text">Barn 1-7 år</li>
+                <li class="nav_text">Barn 8-14 år</li>
+                <li class="nav_text">Turutstyr</li>
+            </ul>
+        </nav>
+    </header>
 
-    
+    <section>
+        <article id="chart_wrap" class="box">
+            <div id="heading_chart">
+                <img id="chart_icon" class="icon" src="../images/icons/chart.png" alt="handlekurv-ikon">
+                <h3>Handlekurv</h3>
+            </div>
+
+            <div id="new_item">
+            
+            </div>  
+        </article>
+    </section>
+
+    <section id="products-grid"></section>
     
 </body>
 </html>

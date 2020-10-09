@@ -199,12 +199,28 @@ button:hover, #btn_small:hover {
     width: 60em;
     height: auto;
     padding: 3em;
+    display: flex;
+    flex-direction: column;
 }
 
 #heading_chart {
     display: flex;
     align-items: center;
     margin-bottom: 2.5em;
+}
+
+#item_wrap {
+    display: grid;
+    border: 1px solid red;
+    grid-template-columns: repeat(4 1fr);
+    grid-template-rows: 1fr;
+    grid-auto-flow: column;    
+}
+
+#item {
+    display: flex;
+    flex-direction: column;
+
 }
 
 #chart_icon {
