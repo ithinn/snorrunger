@@ -129,26 +129,7 @@ let chart = [];
 let button = document.getElementsByClassName("btn_submit");
 
 
-const showInChart = () => {
-    if (chart.length > 0) {
-        chart.forEach(element => document.getElementById("new_item").innerHTML += `
-        <div id="item_wrap">
-            <div id="item" class="item">
-                <p class="item_heading">${element.name}</p>
-                <p class="item_detail">Str. ${element.size[0]}, ${element.color}</p>
-            </div>
-        
-            <div>
-                <input type="number" value="1" id="num_items">
-                <label>stk</label>
-            </div>
 
-            <h3 class="price">${element.price},-</h3>
-            <img id="remove" src="../images/icons/x.png" class="icon" alt="fjern produktet fra handlelisten">
-        </div>
-        `);
-    }
-}
 
 const addToChart = (evt) => {
 
@@ -168,9 +149,11 @@ const addToChart = (evt) => {
             html = document.getElementById("number_items").innerHTML = `
                 <p>(${chart.length})</p>
             `;
+            showInChart();
         }
     }
-    showInChart();
+    
+    findTotal();
 }
 
 button[0].addEventListener("click", addToChart);
@@ -180,50 +163,79 @@ button[3].addEventListener("click", addToChart);
 button[4].addEventListener("click", addToChart);
 button[5].addEventListener("click", addToChart);
 
+const showInChart = () => {
+    if (chart.length > 0) {
+        chart.forEach(el => document.getElementById("new_item").innerHTML += `
+        <div id="item_wrap">
+            <div id="item" class="item">
+                <p class="item_heading">${el.name}</p>
+                <p class="item_detail">Str. ${el.size[0]}, ${el.color}</p>
+            </div>
+        
+            <div>
+                <input type="number" value="1" id="num_items">
+                <label>stk</label>
+            </div>
 
-
-const removeFromChart = () => {
-    
+            <h3 class="price">${el.price},-</h3>
+            <img id="remove" src="../images/icons/x.png" class="icon remove" alt="fjern produktet fra handlelisten">
+        </div>
+        `);
+    }
 }
 
 
+const findTotal = () => {
+    let total = 0;
+    
+    chart.forEach(el => {
+    let price = el.price;
+    price = Number(price);
+    
+    total += price;
 
+    })
+    
+    document.getElementById("total").innerHTML = `
+        <h3 id="totalsum" class="price">${total},-</h3>`
 
-
-
-
-
-
-
-
-
-
+}
 
 
 
 
 
 /*
-const s_button = document.getElementsByClassName(".btn_submit");
+//DEMNNE VIRKER IKKE ENDA
+const remove_icon = document.querySelector("remove");
+const removeFromChart = (evt) => {
+    
+    //Hent ut tallet fra ikonets id
+    console.log(evt.target.id);
+    let x_id = evt.target.id;
+    let x_num = x_id[x_id.length-1];
 
-
-const addProduct = () => {
-
-    let html = "";
-
-    if(products.id===1) {
-        document.getElementById("item_wrap").innerHTML += `
-        <div id="item" class="item">
-            <p class="item_heading">${products.name}</p>
-            <p class="item_detail">${products.color[0]}, ${products.size[0]}</p>
-        </div>
-        `
-    }
+    chart.forEach(element => {
+        if(x-num === products[element].id) {
+            chart.shift(element);
+        }
+    })
 }
 
-s_button.addEventListener("click", addProduct);
+remove_icon.addEventListener("click", removeFromChart);
 
-products.forEach(addProduct);
 */
+
+
+
+
+
+
+
+
+
+
+
+
 
 
