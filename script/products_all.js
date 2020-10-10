@@ -142,6 +142,8 @@ const addToChart = (evt) => {
     //et sted å lagre produktet jeg har valgt
     let newItem = "";
     
+
+    //Identifiser produkt og push det inn i chart-arrayet
     for (let i=0; i<products.length; i++) {
         if (products[i].id == num) {
             newItem = products[i];
@@ -149,11 +151,26 @@ const addToChart = (evt) => {
             html = document.getElementById("number_items").innerHTML = `
                 <p>(${chart.length})</p>
             `;
-            showInChart();
+            html = document.getElementById("num_items_chart").innerHTML = `
+            <p>(${chart.length} varer)</p>
+        `;
         }
     }
-    
+    //Vis chart-arrayet i handlekurven
+    showInChart();
+
+    //Finn totalsummen for alle varer
     findTotal();
+
+    //Velg antall varer og oppdater sum
+    
+    
+    const inp_num = document.getElementById("num_items");
+    updatePrice(inp_num.value);
+
+
+
+    
 }
 
 button[0].addEventListener("click", addToChart);
@@ -165,7 +182,9 @@ button[5].addEventListener("click", addToChart);
 
 const showInChart = () => {
     if (chart.length > 0) {
-        chart.forEach(el => document.getElementById("new_item").innerHTML += `
+
+       
+        chart.forEach(el => document.getElementById("new_item").innerHTML = `
         <div id="item_wrap">
             <div id="item" class="item">
                 <p class="item_heading">${el.name}</p>
@@ -180,7 +199,9 @@ const showInChart = () => {
             <h3 class="price">${el.price},-</h3>
             <img id="remove" src="../images/icons/x.png" class="icon remove" alt="fjern produktet fra handlelisten">
         </div>
-        `);
+        `);*/
+
+
     }
 }
 
@@ -202,6 +223,41 @@ const findTotal = () => {
 }
 
 
+
+
+
+/*
+const inp_num = document.getElementById("num_items");
+    
+    const updatePrice = () => {
+        chart.forEach(el=> {
+            let elPrice = el.price;
+            let inp_val = Number(inp_num.value);
+            elPrice *= inp_num;
+            console.log(elPrice);
+            console.log(typeof(inp_val));
+        })
+    }
+*/
+
+const inp_num = document.getElementById("num_items");
+    
+    const updatePrice = (value) => {
+        chart.forEach(el=> {
+            let elPrice = el.price;
+            elPrice *= value;
+            console.log(elPrice);
+            console.log(typeof(inp_val));
+        })
+    }
+
+
+
+//Velg antall varer og oppdater prisen
+
+
+
+/*<input type="number" value="1" id="num_items">*/
 
 
 
