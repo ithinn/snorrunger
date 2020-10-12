@@ -1,4 +1,5 @@
-//Add all the products to the main side
+
+
 const addObjects = (array) => {
     let html ="";
 
@@ -15,9 +16,36 @@ const addObjects = (array) => {
         <button id="btn_${array[i].id}" class="btn_submit">Kjøp nå</button>
         </article>
         `;
+
+        
+
     }
     document.getElementById("products-grid").innerHTML = html;
 }
 
 addObjects(products);
 
+
+/*
+
+//finn button-id og endre format slik at den kan matche produktets id
+let btn_id = evt.target.id;
+let num = btn_id[btn_id.length-1];
+
+
+
+//Identifiser produkt og push det inn i chart-arrayet
+for (let i=0; i<products.length; i++) {
+
+
+    if (products[i].id == num) {
+        newItem = products[i];
+        chart.push(newItem);
+        html = document.getElementById("number_items").innerHTML = `
+            <p>(${chart.length})</p>
+        `;
+        html = document.getElementById("num_items_chart").innerHTML = `
+        <p>(${chart.length} varer)</p>
+    `;
+    }
+}*/

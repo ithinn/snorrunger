@@ -2,6 +2,9 @@
 let chart = [];
 let button = document.getElementsByClassName("btn_submit");
 
+//et sted å lagre produktet jeg har valgt
+let newItem = "";
+
 //Add items to chart
 const addToChart = (evt) => {
 
@@ -11,11 +14,11 @@ const addToChart = (evt) => {
     let btn_id = evt.target.id;
     let num = btn_id[btn_id.length-1];
 
-    //et sted å lagre produktet jeg har valgt
-    let newItem = "";
 
     //Identifiser produkt og push det inn i chart-arrayet
     for (let i=0; i<products.length; i++) {
+
+
         if (products[i].id == num) {
             newItem = products[i];
             chart.push(newItem);
@@ -27,15 +30,15 @@ const addToChart = (evt) => {
         `;
         }
     }
+
     //Vis chart-arrayet i handlekurven
     showInChart();
 
     //Finn totalsummen for alle varer
-    findTotal();
-
-    //Velg antall varer og oppdater sum VIRKERIKKE
-    
+    findTotal();    
 }
+
+
 
 button[0].addEventListener("click", addToChart);
 button[1].addEventListener("click", addToChart);
@@ -52,7 +55,7 @@ const showInChart = () => {
     if (chart.length > 0) {
 
        document.getElementById("new_item").innerHTML = "";
-        chart.forEach(el => document.getElementById("new_item").innerHTML += `
+        chart.forEach((el, i) => {document.getElementById("new_item").innerHTML += `
         <div id="item_wrap">
             <div id="item" class="item">
                 <p class="item_heading">${el.name}</p>
@@ -60,55 +63,29 @@ const showInChart = () => {
             </div>
         
             <div>
-                <input type="number" value="1" id="num_items" oninput="updatePrice()">
+                <input type="number" value="1" id="num_items${i}">
                 <label>stk</label>
             </div>
 
-            <h3 id="prisFelt" class="price">${el.price},-</h3>
+            <h3 id="priceH3" class="price">${el.price},-</h3>
             <img id="remove${el.id}" src="../images/icons/x.png" class="icon remove" alt="fjern produktet fra handlelisten">
-        </div>`
-        );
+        </div>`;
 
+        document.querySelector(`num_items${i}`).addEventListener("change", updatePrice);
+        
+        
+    });
+
+    
+     
     }
-    let test = document.getElementById("num_items");
-    test.addEventListener("oninput",updatePrice);
+    
 
-    let remove_icon = document.getElementsByClassName("remove");
-    remove_icon.addEventListener("click", removeFromChart);
+    // let remove_icon = document.getElementsByClassName("remove");
+    // remove_icon.addEventListener("click", removeFromChart);
+
 
 }
-
-
-// const showInChart = () => {
-
-//     let html="";
-
-//     if (chart.length > 0) {
-//         chart.forEach(el => {
-//             html += `
-//         <div id="item_wrap">
-//             <div id="item" class="item">
-//                 <p class="item_heading">${el.name}</p>
-//                 <p class="item_detail">Str. ${el.size[0]}, ${el.color}</p>
-//             </div>
-        
-//             <div>
-//                 <input oninput="updatePrice()" type="number" value="1" id="num_items">
-//                 <label>stk</label>
-//             </div>
-
-//             <div id="price_wrap>
-//                 <h3 id="showPrice" class="price">${el.price},-</h3>
-//             </div>
-//             <img id="remove" src="../images/icons/x.png" class="icon remove" alt="fjern produktet fra handlelisten">
-//         </div>
-//         `;
-//         document.getElementById("new_item").innerHTML = html; 
-//         }) 
-//     }
-//     let test = document.getElementById("num_items");
-//     test.addEventListener("oninput", updatePrice);
-//     }
 
 
 //add all prices and find the total 
@@ -116,10 +93,10 @@ const findTotal = () => {
     let total = 0;
     
     chart.forEach(el => {
-        let price = el.price;
-        price = Number(price);
+        let prices = el.price;
+        prices = Number(prices);
     
-        total += price;
+        total += prices;
     })
     
     document.getElementById("total").innerHTML = `
@@ -128,25 +105,28 @@ const findTotal = () => {
 
 
 
-const updatePrice = () => {
+
+//update the price after changing the input value
+const updatePrice = (evt) => {
     let number = document.getElementById("num_items").value;
-    let prisFelt = document.getElementById("prisFelt");
+    let priceH3 = document.getElementById("priceH3");
     
+    
+    //HER MÅ JEG ADDE ET NYTT ITEM FOR HVER GANG VALUE ENDRER SEG
+
     chart.forEach(el=> {
         let price = el.price;
         price *= number;
-        console.log("test");
-        console.log(price);
-        prisFelt.innerHTML = price;
+        priceH3.innerHTML = price;
     })
-    findTotal()
+    findTotal();
+    
 }
-
 
 
 //remove item from chart //DEMNNE VIRKER IKKE ENDA
 
-
+/*
 const removeFromChart = (evt) => {
     
     //Hent ut tallet fra ikonets id
@@ -166,89 +146,13 @@ const removeFromChart = (evt) => {
     })
 }
 
-
-
-
-/*
-const inp_num = document.getElementById("num_items");
-    let html1="";
-
-        const updatePrice = () => {
-            chart.forEach(el=> {
-                let newPrice = el.price;
-                let inp_val = Number(inp_num.value);
-                console.log(inp_val);
-                newPrice *= inp_val;
-                console.log(newPrice);
-                html+=`${newPrice}`;
-            })
-            document.getElementById("showPrice").innerHTML = html1;
-        }
-    
-        inp_num.addEventListener("oninput", updatePrice);
-        
-
 */
 
 
-
-
-
-
-
-
-
-
 /*
-const inp_num = document.getElementById("num_items");
-    
-    const updatePrice = () => {
-        chart.forEach(el=> {
-            let elPrice = el.price;
-            let inp_val = Number(inp_num.value);
-            elPrice *= inp_num;
-            console.log(elPrice);
-            console.log(typeof(inp_val));
-        })
-    }
-*/
-
-
-
-//Velg antall varer og oppdater prisen
-
-
-
-/*<input type="number" value="1" id="num_items">*/
-
-
-
-/*
+export {chart, button, addToChart, showInChart, findTotal, updatePrice};*/
 
 
 
 
-if (chart.length > 0) {
 
-        chart.forEach(el => document.getElementById("new_item").innerHTML += `
-        <div id="item_wrap">
-            <div id="item" class="item">
-                <p class="item_heading">${el.name}</p>
-                <p class="item_detail">Str. ${el.size[0]}, ${el.color}</p>
-            </div>
-        
-            <div>
-                <input type="number" value="1" id="num_items">
-                <label>stk</label>
-            </div>
-
-            <div id="price_wrap>
-                <h3 id="price" class="price">${el.price},-</h3>
-            </div>
-            <img id="remove" src="../images/icons/x.png" class="icon remove" alt="fjern produktet fra handlelisten">
-        </div>
-        `);
-    }
-}
-
-*/
