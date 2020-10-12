@@ -18,6 +18,9 @@
     <script src="../script/product_list.js" defer></script>
     <script src="../script/products_all.js" defer></script>
     <script src="../script/charts.js" defer></script>
+    <script src="../script/size-filter.js" defer></script>
+    <script src="../script/nav.js" defer></script>
+    <script src="../script/cathegory_filter.js" defer></script>
     
 </head>
 <body>
@@ -34,23 +37,74 @@
         
         <nav>
             <ul>
-                <li class="nav_text">Barn 1-7 år</li>
-                <li class="nav_text">Barn 8-14 år</li>
+                <li class="nav_text" id="jakker">Jakker</li>
+                <li class="nav_text">Bukser</li>
                 <li class="nav_text">Turutstyr</li>
             </ul>
         </nav>
     </header>
 
-    <section>
+    
+
+
+
+    <section id="content-wrap">
+        
+        <div id="filter_wrap">
+            <article>
+                <div class="box filter_container" id="cathegory">
+                    <h3>Kategori</h3>
+                    
+                    <img class="icon" src="../images/icons/+.png">
+                    <div class="filter_content" id="cat_content"></div>
+                </div>
+            </article>
+            <article>
+                <div class="box filter_container" id="size">
+                    <h3>Størrelse</h3>
+                    <img class="icon" src="../images/icons/+.png">
+                    <div class="filter_content" id="size_content"></div>
+                    
+                </div>
+            </article>
+            <article>
+                <div class="box filter_container" id="attribute">
+                    <h3>Funksjon</h3>
+                    <div id="att_content"></div>
+                    <img class="icon" src="../images/icons/+.png">
+                </div>
+            </article>
+            <article>
+                <div class="box filter_container" id="color">
+                    <h3>Farge</h3>
+                    <div id="color_content"></div>
+                    <img class="icon" src="../images/icons/+.png">
+                </div>
+            </article>
+            <article>
+                <div class="box filter_container" id="price">
+                    <h3>Pris</h3>
+                    <div id="price_content"></div>
+                    <img class="icon" src="../images/icons/+.png">
+                </div>
+            </article>
+        </div>
+
+        
+
+    <section id="products-grid"></section>
+    </section>
+
+    <section id="chart_section">
         <article id="chart_wrap" class="box">
             <div id="heading_chart">
                 <img id="chart_icon" class="icon" src="../images/icons/chart.png" alt="handlekurv-ikon">
                 <h3>Handlekurv</h3>
                 <div id="num_items_chart"></div>
             </div>
-
+    
             <div id="new_item"></div>  
-
+    
             <div id="total_wrap">
                 <h4>Du skal betale:</h4>
                 <div id="total">
@@ -59,10 +113,7 @@
             </div>
             <button id="pay_btn" class="btn_submit">Gå til betaling</button>
         </article>
-    </section>
-
-    <section id="products-grid"></section>
-    
+        </section>
 </body>
 </html>
 

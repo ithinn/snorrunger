@@ -55,7 +55,7 @@ const showInChart = () => {
     if (chart.length > 0) {
 
        document.getElementById("new_item").innerHTML = "";
-        chart.forEach((el, i) => {document.getElementById("new_item").innerHTML += `
+        chart.forEach(el => {document.getElementById("new_item").innerHTML += `
         <div id="item_wrap">
             <div id="item" class="item">
                 <p class="item_heading">${el.name}</p>
@@ -63,7 +63,7 @@ const showInChart = () => {
             </div>
         
             <div>
-                <input type="number" value="1" id="num_items${i}">
+                <input type="number" value="1" id="num_items">
                 <label>stk</label>
             </div>
 
@@ -71,18 +71,27 @@ const showInChart = () => {
             <img id="remove${el.id}" src="../images/icons/x.png" class="icon remove" alt="fjern produktet fra handlelisten">
         </div>`;
 
-        document.querySelector(`num_items${i}`).addEventListener("change", updatePrice);
+        //document.querySelector(`num_items${el.id}`).addEventListener("change", updatePrice);
         
         
     });
 
-    
+    let inp_num = document.getElementById("num_items");
+    inp_num.addEventListener("change", updatePrice);
+
+    /*
+        let remove_icon = document.getElementsByClassName("icon");
+        remove_icon[1].addEventListener("click", removeFromChart);
+        remove_icon[2].addEventListener("click", removeFromChart);
+        remove_icon[3].addEventListener("click", removeFromChart);
+        remove_icon[4].addEventListener("click", removeFromChart);
+        remove_icon[5].addEventListener("click", removeFromChart);
+        remove_icon[6].addEventListener("click", removeFromChart);*/
      
     }
     
 
-    // let remove_icon = document.getElementsByClassName("remove");
-    // remove_icon.addEventListener("click", removeFromChart);
+
 
 
 }
@@ -116,6 +125,8 @@ const updatePrice = (evt) => {
 
     chart.forEach(el=> {
         let price = el.price;
+
+
         price *= number;
         priceH3.innerHTML = price;
     })
@@ -135,13 +146,15 @@ const removeFromChart = (evt) => {
     let x_num = x_id[x_id.length-1];
 
     
-    console.log(products[3].id);
+    
     console.log(x_id);
     console.log(x_num);
+    console.log(chart);
 
     chart.forEach(el => {
         if(x_num === products[el].id) {
             chart.shift(el);
+            console.log(chart);
         }
     })
 }

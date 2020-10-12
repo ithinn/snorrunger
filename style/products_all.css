@@ -1,4 +1,20 @@
+#content-wrap {
+    display: grid;
+    grid-template-columns: 30%, 70%;
+    
+    column-gap: 2em;
+    grid-auto-flow: row;
+    
+}
+
+#filter-wrap {
+    display: flex;
+    grid-column: 1 / span 1;
+}
+
 #products-grid {
     width: 60%;
     display: flex;
+    grid-column: 2 / span 1;
+    
 }

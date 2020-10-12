@@ -84,7 +84,7 @@ const products =
     {
 		name: "Fluppilupp",
 		cathegory_main: "Jakker",
-		cathegory_under: "Dunjakke",
+		cathegory_under: "Dunjakker",
 		age: 2,
 		color: ['red', 'gray'],
 		size: [86, 110, 116, 122],
