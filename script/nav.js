@@ -93,7 +93,7 @@ const addAttribute = (a) => {
 
 
 //Adds color filters
-
+let clr = "";
 const addColor = (a) => {
     let html = "";
 
@@ -102,18 +102,16 @@ const addColor = (a) => {
         for (let j = 0; j < colors.length; j++) {
 
             for (let k = 0; k < a[i].color.length; k++) {
-
+                clr = a[i].color[k];
                 if(a[i].color[k] === colors[j]) {
-
                     html += `
-                    <div id="clr" class="clr_large"></div>
+                    <div id="clr${i}" class="clr_large"></div>
                     `
-            
+                    
+                    
                 }
 
-                if(a[i].color[k] ==="red") {
-                    document.getElementById("clr").style.backgroundColor = "#c1272d";
-                }
+               
                 
             }
         }
@@ -122,6 +120,10 @@ const addColor = (a) => {
     }; 
 }
 
+
+// const changeColor = (id) => {
+//     if ()
+// }
 
 // switch(colors) {
 //     case "red":

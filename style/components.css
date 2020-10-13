@@ -212,7 +212,7 @@ button:hover, #btn_small:hover {
 }
 
 /*Handlekurv*/
-#chart_wrap {
+#cart_wrap {
     width: 60em;
     height: auto;
     padding: 3em;
@@ -220,13 +220,13 @@ button:hover, #btn_small:hover {
     flex-direction: column;
 }
 
-#heading_chart {
+#heading_cart {
     display: flex;
     align-items: center;
     margin-bottom: 2.5em;
 }
 
-#item_wrap, #total_wrap {
+.item_wrap, #total_wrap {
     display: grid;
     border: 1px solid red;
     grid-template-columns: 50% repeat(3, 1fr);
@@ -241,17 +241,23 @@ button:hover, #btn_small:hover {
 
 }
 
+.num_items {
+    width: 3em;
+}
+
 #totalsum {
     grid-column: 3 /span 1;
 }
 
-#chart_icon {
+#cart_icon {
     margin-right: 1.5em;
 }
 
 .price {
     color: #707312;
 }
+
+
 
 /*Produkt*/
 .product {

@@ -17,8 +17,6 @@ const addObjects = (array) => {
         </article>
         `;
 
-        
-
     }
     document.getElementById("products-grid").innerHTML = html;
 }
@@ -34,18 +32,18 @@ let num = btn_id[btn_id.length-1];
 
 
 
-//Identifiser produkt og push det inn i chart-arrayet
+//Identifiser produkt og push det inn i cart-arrayet
 for (let i=0; i<products.length; i++) {
 
 
     if (products[i].id == num) {
         newItem = products[i];
-        chart.push(newItem);
+        cart.push(newItem);
         html = document.getElementById("number_items").innerHTML = `
-            <p>(${chart.length})</p>
+            <p>(${cart.length})</p>
         `;
-        html = document.getElementById("num_items_chart").innerHTML = `
-        <p>(${chart.length} varer)</p>
+        html = document.getElementById("num_items_cart").innerHTML = `
+        <p>(${cart.length} varer)</p>
     `;
     }
 }*/

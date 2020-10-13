@@ -12,7 +12,7 @@ const products =
 		url: ['../images/jackets/dalfonna1.jpg', '../images/jackets/dalfonna2.jpg', '../images/jackets/dalfonna3.jpg'],
 		ingress: "Dette er en nydelig bukse som alle andre bukser",
         description: "",
-        id: 1
+        id: 0
         
 	},
 	{
@@ -27,7 +27,7 @@ const products =
 		url: ['../images/jackets/dirdalnes_fleece1.jpg', '../images/jackets/dirdalnes_fleece2.jpg', '../images/jackets/dirdalnes_fleece3.jpg'],
 		ingress: "Denne buksen er i deilig ull",
         description: "",
-        id: 2
+        id: 1
 	},
 	{
 		name: "Moltehei",
@@ -41,7 +41,7 @@ const products =
 		url: ['../images/jackets/Moltehei_softshell1.jpg', '../images/jackets/Moltehei_softshell2.jpg', '../images/jackets/Moltehei_softshell3.jpg'],
 		ingress: "Denne jakken er i deilig ull",
         description: "",
-        id: 3
+        id: 2
 	},
 	{
 		name: "Dalfonna vattert bukse",
@@ -55,7 +55,7 @@ const products =
 		url: ['../images/pants/dalfonna_vattert1.jpg', '../images/pants/dalfonna_vattert2.jpg'],
 		ingress: "Denne buksen er i deilig ull",
         description: "",
-        id: 4
+        id: 3
 	},
 	{
 		name: "Sisotind",
@@ -69,7 +69,7 @@ const products =
 		url: ['../images/jackets/dirdalnes_fleece3.jpg', '../images/jackets/dirdalnes_fleece1.jpg', '../images/jackets/dirdalnes_fleece2.jpg'],
 		ingress: "Denne buksen er i deilig ull",
         description: "",
-        id: 5
+        id: 4
     },
     {
 		name: "Fluppilupp",
@@ -83,7 +83,7 @@ const products =
 		url: ['../images/jackets/dirdalnes_fleece2.jpg', '../images/jackets/dirdalnes_fleece1.jpg', '../images/jackets/dirdalnes_fleece3.jpg'],
 		ingress: "Dette er en fantastisk dunjakke",
         description: "",
-        id: 6
+        id: 5
     }
     ] 
 ;

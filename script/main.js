@@ -90,7 +90,7 @@ let newObject = products.name;
 
 
 //Lag et nytt objekt
-const createChartObj = (name, color, size, price) => {
+const createcartObj = (name, color, size, price) => {
 	return {
 		name: name,
 		description: color + "," + size,
@@ -98,13 +98,13 @@ const createChartObj = (name, color, size, price) => {
 	}
 }
 
-console.log(createChartObj(products[2].name, products[2].color[0], products[2].size[3], products[2].price));
+console.log(createcartObj(products[2].name, products[2].color[0], products[2].size[3], products[2].price));
 
 
 //Legg til ny vare i handlekurven
 const addItem = () => {
 
-	createChartObj()
+	createcartObj()
     document.getElementById("item1_h").innerHTML += `${products[3].name}`;
 	document.getElementById("item1_d").innerHTML += `${products[3].color[1]}`;
 	document.getElementById("price").innerHTML += `${products[3].price},-`

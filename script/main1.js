@@ -1,14 +1,14 @@
 import {addObjects} from "./products_all.js";
 import {products} from "./product_list.js";
-import {chart, button, addToChart, showInChart, findTotal, updatePrice} from "./charts.js";
+import {cart, button, addTocart, showIncart, findTotal, updatePrice} from "./carts.js";
 
 
 console.log(products);
 
 addObjects(products);
 // addObjects(products);
-// addToChart();
-// showInChart();
+// addTocart();
+// showIncart();
 // findTotal();
 // updatePrice();
 

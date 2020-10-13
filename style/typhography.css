@@ -69,7 +69,6 @@ button {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    margin:
 }
 
 .item_heading {
@@ -81,6 +80,3 @@ button {
     font-style: italic;
 }
 
-#num_items {
-    width: 3em;
-}
