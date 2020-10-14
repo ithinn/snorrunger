@@ -68,7 +68,7 @@ const showIncart = () => {
                 <label>stk</label>
             </div>
 
-            <h3 id="priceH3" class="price">${el.price},-</h3>
+            <h3 id="priceH3" class="price1">${el.price},-</h3>
             <img id="remove${el.id}" src="../images/icons/x.png" class="icon remove" alt="fjern produktet fra handlelisten">
             
             </div>
@@ -76,14 +76,25 @@ const showIncart = () => {
 
            console.log(cart);
 
-
             //Legg til lyttere inni løkka. (Her er det noe kluss)
             let get = document.querySelector(`#num_items${i}`);
             get.addEventListener("input", () => updatePrice(`num_items${i}`));
 
-            let get2 = document.querySelector(`#remove${el.id}`);
-            get2.addEventListener("click", () => removeFromCart(`remove${el.id}`));
+            // let get2 = document.querySelector(`#remove${el.id}`);
+            // get2.addEventListener("click", () => removeFromCart(`remove${el.id}`));
+           
        }); 
+       let fjernKnapper = document.querySelectorAll(".remove");
+       
+       for (const fjernKnapp of fjernKnapper) {
+           fjernKnapp.addEventListener("click", removeFromCart);
+       }
+
+       let inp = document.querySelectorAll(".num_items");
+       
+       for (const i of inp) {
+           i.addEventListener("input", updatePrice);
+       }
     }
 }
 
@@ -106,15 +117,23 @@ const findTotal = () => {
 
 
 //update the price after changing the input value
-const updatePrice = (id) => {
+const updatePrice = (evt) => {
     let priceH3 = document.getElementById("priceH3");
-    let number = document.getElementById(id).value;
-    number = Number(number);
+    let number = evt.target.value;
 
+    // let number = document.getElementById(id).value;
+    // number = Number(number);
+    // let priceH3 = document.querySelector(".price1").id;
+    // let onlyNum = priceH3[priceH3.length-1];
+    // console.log(priceH3);
+
+   
     
     //HER MÅ JEG ADDE ET NYTT ITEM FOR HVER GANG VALUE ENDRER SEG
 
     cart.forEach(el=> {
+        
+        
         let price = el.price;
         //ASSÅ VIRKER IKKE, men jeg må finne en måte å si at hvis input value er større enn den gamle skal prisen ganges med valuen, og hvis den er mindre skal den---trekkes fra
         // if(number++) {
@@ -124,6 +143,8 @@ const updatePrice = (id) => {
         // )
         // ]
         
+        price *= number;
+        
         
         priceH3.innerHTML = price;
     })
@@ -132,18 +153,24 @@ const updatePrice = (id) => {
 
 
 //remove item from cart HER ER DET EN DEL KLUSS
-const removeFromCart = (id) => {
-    let x_id = document.getElementById(id).id;
-    x_id = Number(x_id[x_id.length-1]);
+const removeFromCart = (evt) => {
+    let icon_id = evt.target.id;
+    let onlyNum = Number(icon_id[icon_id.length-1]); 
+
+
     
-    console.log(x_id);
+    // let x_id = document.getElementById(id).id;
+    // x_id = Number(x_id[x_id.length-1]);
+    
+    console.log(onlyNum);
     
    cart.forEach(el => {
        let product_id = el.id;
+       console.log(product_id);
        let product_price = el.price;
        console.log(product_price);
        
-       if(x_id === product_id) {
+       if(onlyNum === product_id) {
            
             //Tømmer htmlen
            document.getElementById(`item_wrap${el.id}`).innerHTML = ``;
