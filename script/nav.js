@@ -1,11 +1,19 @@
 
 //Global
 const jakker = document.querySelector("#jakker");
+const bukser = document.querySelector("#bukser");
 let c_u_arr = ['Dunjakker', 'Skalljakker', 'Ulljakker'];
 let allSizes = [86, 92, 98, 104, 110, 116, 122];
 let qualities = ['vannavstøtende', 'vindtett', 'vanntett', 'varm', 'strikk'];
 let colors = ['green', 'red', 'blue', 'black', 'gray'];
-let emptArray = [];
+let sizeArray = [];
+let catArray = [];
+let attArr = [];
+let clrArr = [];
+let sizeUni = [];
+let catUni = [];
+let attUni = [];
+let clrUni = [];
 let qualFilterArr = [];
 
 
@@ -34,15 +42,25 @@ const addUnderCat = (array) => {
     for (let i = 0; i<array.length; i++) {
         for (let j = 0; j<c_u_arr.length; j++){
             if (array[i].cathegory_under === c_u_arr[j]) {
-                html += `
-                <div class="tag">
-                 <p>${c_u_arr[j]}</p>
-                 </div>
-                `
+
+                let c = array[i].cathegory_under;
+                catArray.push(c);
             }
         }
-        document.getElementById("cat_content").innerHTML = html;
     }
+    //lag ny liste med bare sizeUnike verdier
+    catUni = catArray.filter(onlysizeUnique);
+    
+    //Sørg for at den nye listen vises på siden
+    catUni.forEach(el => {                
+        html += `
+                <div class="tag">
+                 <p>${el}</p>
+                 </div>
+                `
+    })
+       
+    document.getElementById("cat_content").innerHTML = html;
 }
 
 
@@ -51,21 +69,36 @@ const addSizes = (array) => {
     
     for (let i = 0; i<array.length; i++) {
         
-        for (let j = 0; j<allSizes.length; j++)
+        for (let j = 0; j<allSizes.length; j++) {
         
-            for (let k = 0; k < array[i].size.length; k++)
+            for (let k = 0; k < array[i].size.length; k++) {
                 if (array[i].size[k] === allSizes[j]) {
-                    html += `
-                    <div class="tag">
-                    <p>${array[i].size[k]}</p>
-                    </div>
-                    `
-                    let test = array[i].size[k];
-                    emptArray.push(test);
-            }
-        document.getElementById("size_content").innerHTML = html;
+                    
+                    let s = array[i].size[k];
+                    sizeArray.push(s); 
+                }     
+            }   
+        }
     }
+    //lag ny liste med bare sizeUnike verdier
+    sizeUni = sizeArray.filter(onlysizeUnique);
+    
+    //Sørg for at den nye listen vises på siden
+    sizeUni.forEach(el => {                
+        html += `
+        <div class="tag">
+        <p>${el}</p>
+        </div>
+        `
+    })
+       
+    document.getElementById("size_content").innerHTML = html;
 }
+
+
+
+
+
 
 
 //Adds "Funksjon" filters
@@ -77,18 +110,29 @@ const addAttribute = (a) => {
         for (let j = 0; j < qualities.length; j++) {
 
             for (let k = 0; k < a[i].quality1.length; k++) {
-                if(a[i].quality1[k] === qualities[j] )          {
-                    html += `
-                    <div class="tag">
-                    <p>${a[i].quality1[k]}</p>
-                    </div>
-                    `
-                    qualFilterArr.push(a[i].quality1[k]);
+                if(a[i].quality1[k] === qualities[j] ) {
+                  
+                    attArr.push(a[i].quality1[k]);
                 }
             }
         }
-        document.getElementById("att_content").innerHTML = html;
-    } 
+    }
+    //lag ny liste med bare sizeUnike verdier
+    attUni = attArr.filter(onlysizeUnique);
+    console.log(attUni);
+    
+    //Sørg for at den nye listen vises på siden
+    attUni.forEach(el => {                
+        html += `
+        <div class="tag">
+        <p>${el}</p>
+        </div>
+        `
+   })
+       
+   document.getElementById("att_content").innerHTML = html;
+ 
+    
 }
 
 
@@ -103,30 +147,71 @@ const addColor = (a) => {
 
             for (let k = 0; k < a[i].color.length; k++) {
                 clr = a[i].color[k];
-                if(a[i].color[k] === colors[j]) {
-                    html += `
-                    <div id="clr${i}" class="clr_large"></div>
-                    `
-                    
-                    
-                }
 
-               
-                
+                if(clr === colors[j]) {
+
+                    clrArr.push(clr);
+                    console.log(clrArr);
+
+                }
             }
         }
-
-    document.getElementById("color_content").innerHTML = html;
     }; 
+
+    //lag ny liste med bare sizeUnike verdier
+    clrUni = clrArr.filter(onlysizeUnique);
+    console.log(clrUni);
+    
+    //Sørg for at den nye listen vises på siden
+    clrUni.forEach(el => {                
+        if (el === 'red') {
+            html += `
+            <div class="clr_large" style="background-color: red;"></div>
+            `; 
+        } else if (el === 'green') {
+            html += `
+            <div class="clr_large" style="background-color: green;"></div>
+            `; 
+    
+        } else if (el === 'blue') {
+            html += `
+            <div class="clr_large" style="background-color: blue;"></div>
+            `; 
+    
+        } else if (el === 'black') {
+            html += `
+            <div class="clr_large" style="background-color: #333333;"></div>
+            `; 
+    
+        } else if (el === 'gray') {
+            html += `
+            <div class="clr_large" style="background-color: gray;"></div>
+            `; 
+        }
+   })
+    document.getElementById("color_content").innerHTML = html;
 }
 
 
-// const changeColor = (id) => {
-//     if ()
-// }
+ //Sjekk om verdien er unik
+ const onlysizeUnique = (value, index, self) => {
+    return self.indexOf(value) === index;
+    }
 
-// switch(colors) {
-//     case "red":
+//Functions
+const filterPants = () => {
 
-        
-// }
+    //Filtrerer ut jakkeelementer
+    let pantsArray = products.filter(function(product) {
+        return product.cathegory_main == "Bukser"
+    })
+    
+    //Legger dem til i lista
+    addObjects(pantsArray)
+    addUnderCat(pantsArray);
+    addSizes(pantsArray);
+    addAttribute(pantsArray);
+    addColor(pantsArray);
+    }
+    
+    bukser.addEventListener("click", filterPants);

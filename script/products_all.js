@@ -10,8 +10,8 @@ const addObjects = (array) => {
         <h4>${array[i].name}</h4>
         <h4 class="price">${array[i].price},-</h4>
         <article id="colors">
-            <div id="clr1" class="clr_small"></div>
-            <div id="clr2" class="clr_small"></div>
+            <div  class="clr_small"></div>
+            <div  class="clr_small"></div>
         </article>
         <button id="btn_${array[i].id}" class="btn_submit">Kjøp nå</button>
         </article>

@@ -77,19 +77,22 @@ const showIncart = () => {
            console.log(cart);
 
             //Legg til lyttere inni løkka. (Her er det noe kluss)
-            let get = document.querySelector(`#num_items${i}`);
-            get.addEventListener("input", () => updatePrice(`num_items${i}`));
+            // let get = document.querySelector(`#num_items${i}`);
+            // get.addEventListener("input", () => updatePrice(`num_items${i}`));
 
             // let get2 = document.querySelector(`#remove${el.id}`);
             // get2.addEventListener("click", () => removeFromCart(`remove${el.id}`));
            
        }); 
+
+       //Oppretter lyttere for remove-ikonet
        let fjernKnapper = document.querySelectorAll(".remove");
        
        for (const fjernKnapp of fjernKnapper) {
            fjernKnapp.addEventListener("click", removeFromCart);
        }
 
+       //Oppretter lyttere for input-feltene
        let inp = document.querySelectorAll(".num_items");
        
        for (const i of inp) {

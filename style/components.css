@@ -110,11 +110,13 @@ button:hover, #btn_small:hover {
     padding-right: 5em;
 }
 
-.filter_content {
+.filter_content, #color_content {
     display: flex;
     margin: 2em auto;
     flex-wrap: wrap;
+    justify-content: flex-start;
 }
+
 
 /*Menu*/
 #menu {
@@ -278,13 +280,14 @@ button:hover, #btn_small:hover {
     object-fit: cover;
 }
 
+/*
 #clr1 {
     background-color: #73434B;
 }
 
 #clr2 {
     background-color: #A6831B;
-}
+}*/
 
 #colors {
     width: 100%;
