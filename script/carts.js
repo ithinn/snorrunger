@@ -1,46 +1,18 @@
-export {addObjects, cart,  total, newItem, addToCart, showInCart, findTotal, findPrice, updatePrice, removeFromCart};
 
 //global scope
 let cart = [];
 let total = 0;
 let newItem = "";
+let buttons = document.querySelectorAll(".btn_submit");
+
 
 //--------------------------------------------------------------
-
-//ADD ALL PRODUCTS TO THE SITE
-const addObjects = (array) => {
-    let html ="";
-
-    for (let i = 0; i < array.length; i++) {
-        html += `
-        <article id="${array[i].id}"class="product box">
-        <img class="product_img" src="${array[i].url[0]}">
-        <h4>${array[i].name}</h4>
-        <h4 class="price">${array[i].price},-</h4>
-        <article id="colors">
-            <div  class="clr_small"></div>
-            <div  class="clr_small"></div>
-        </article>
-        <button id="btn_${array[i].id}" class="btn_submit">Kjøp nå</button>
-        </article>
-        `;
-        let buttons = document.querySelectorAll(".btn_submit");
-for (const button of buttons) {
-    button.addEventListener("click", addToCart)
-    };
-    document.getElementById("products-grid").innerHTML = html;
-    
-
-}
-
-}
-
-
 
 
 
 //ADD ITEMS TO CART
 const addToCart = (evt) => {
+    console.log(evt.target.id);
     let html ="";
 
     //finn button-id
@@ -62,9 +34,26 @@ const addToCart = (evt) => {
     //Finn totalsummen for alle varer
     findTotal();       
     //Opprett eventlisteners til buttons
-
+   
 }
 
+//Generell lytterfunksjon
+// function addEventListeners(array, event, funksjon) {
+//     for (const item of array) {
+//         item.addEventListeners(`${event}`, funksjon);
+//     }
+// }
+
+// addEventListener(buttons, `${click}`, addToCart);
+
+const addEventButton = () => {
+    let buttons = document.querySelectorAll(".btn_submit");
+    for (const button of buttons) {
+    button.addEventListener("click", addToCart);
+}
+}
+
+addEventButton();
 
 
 //------------------------------------------------------------------------------
@@ -78,7 +67,8 @@ const showInCart = () => {
     let handlekurv = document.getElementById("cartH3");
     
     //Vis antall varer i handlekurven
-    if (cart.length > 0) {
+    if (cart.length >= 0) {
+        document.getElementById("number_items").innerHTML = `<p>(${cart.length})</p>`;
     
        if (cart.length === 1) {
         document.getElementById("num_items_cart").innerHTML = `
@@ -89,8 +79,7 @@ const showInCart = () => {
         } else if (cart.length > 1) {
         document.getElementById("num_items_cart").innerHTML = `
         <p>(${cart.length} varer)</p>`;
-        document.getElementById("number_items").innerHTML = `<p>(${cart.length})</p>`;
-    }   
+        }   
     }
 
     //Oppretter ny html i handlekurven
@@ -111,7 +100,7 @@ const showInCart = () => {
             <label>stk</label>
             </div>
 
-        <h3 id="priceH3${i}" class="price1">${findPrice(el)},-</h3>
+        <h3 id="priceH3${i}" class="price">${findPrice(el)},-</h3>
         <img id="remove${i}" src="../images/icons/x.png" class="icon remove" alt="fjern produktet fra handlelisten">
             
         </div>

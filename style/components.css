@@ -225,21 +225,35 @@ button:hover, #btn_small:hover {
 #heading_cart {
     display: flex;
     align-items: center;
+    
     margin-bottom: 2.5em;
+    
 }
+
+#cartH3, #num_items_cart  {
+    margin-right: 2em;
+}
+
+#removeCart {
+    position: relative;
+    left: 17em;
+}
+
 
 .item_wrap, #total_wrap {
     display: grid;
-    border: 1px solid red;
     grid-template-columns: 50% repeat(3, 1fr);
     grid-template-rows: 1fr;
     grid-auto-flow: column;
     gap: 3em;   
+    align-items: center;
+    margin-bottom: 3em;
 }
 
 #item {
     display: flex;
     flex-direction: column;
+    
 
 }
 
@@ -259,6 +273,14 @@ button:hover, #btn_small:hover {
     color: #707312;
 }
 
+
+
+#total_wrap {
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+       
+}
 
 
 /*Produkt*/

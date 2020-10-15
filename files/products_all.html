@@ -9,22 +9,27 @@
     <link rel="stylesheet" href="../style/components.css">
     <link rel="stylesheet" href="../style/header_nav_footer.css">
     <link rel="stylesheet" href="../style/products_all.css">
+    <link rel="stylesheet" href="../style/product.css">
     
     
-    
-    <script src="../script/main.js" type="module"></script>
+     <!--
+    <script src="../script/main.js" type="module"></script>-->
 
-    <!--
+   
     <script src="../script/product_list.js" defer></script>
     <script src="../script/products_all.js" defer></script>
     <script src="../script/carts.js" defer></script>
     <script src="../script/size-filter.js" defer></script>
     <script src="../script/colors.js" defer></script>
     <script src="../script/nav.js" defer></script>
-    <script src="../script/cathegory_filter.js" defer></script>-->
+    <script src="../script/cathegory_filter.js" defer></script>
+    <script src="../script/filters.js" defer></script>
+    <script src="../script/product.js" defer></script>
+    <script src="../script/cartStyle.js" defer></script>
     
 </head>
 <body>
+    <div id="overlay"></div>
     <header>
         <div id="header_top">
             <img id="logo" src="../images/icons/logo.png" alt="Snørrungers logo">
@@ -96,6 +101,12 @@
     <section id="products-grid"></section>
     </section>
 
+
+
+    <section class="box" id="grid-container"></section>
+
+
+
     <section id="cart_section">
         <article id="cart_wrap" class="box">
             <div id="heading_cart">
@@ -104,6 +115,7 @@
                     <h3>Handlekurv</h3>
                 </div>
                 <div id="num_items_cart"></div>
+                <img id="removeCart" src="../images/icons/x.png" class="icon";>
             </div>
     
             <div id="new_item"></div>  
