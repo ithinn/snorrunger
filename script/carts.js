@@ -1,214 +1,206 @@
+export {addObjects, cart,  total, newItem, addToCart, showInCart, findTotal, findPrice, updatePrice, removeFromCart};
+
 //global scope
 let cart = [];
 let total = 0;
-
-
-//et sted å lagre produktet jeg har valgt
 let newItem = "";
 
-//Add items to cart
+//--------------------------------------------------------------
+
+//ADD ALL PRODUCTS TO THE SITE
+const addObjects = (array) => {
+    let html ="";
+
+    for (let i = 0; i < array.length; i++) {
+        html += `
+        <article id="${array[i].id}"class="product box">
+        <img class="product_img" src="${array[i].url[0]}">
+        <h4>${array[i].name}</h4>
+        <h4 class="price">${array[i].price},-</h4>
+        <article id="colors">
+            <div  class="clr_small"></div>
+            <div  class="clr_small"></div>
+        </article>
+        <button id="btn_${array[i].id}" class="btn_submit">Kjøp nå</button>
+        </article>
+        `;
+        let buttons = document.querySelectorAll(".btn_submit");
+for (const button of buttons) {
+    button.addEventListener("click", addToCart)
+    };
+    document.getElementById("products-grid").innerHTML = html;
+    
+
+}
+
+}
+
+
+
+
+
+//ADD ITEMS TO CART
 const addToCart = (evt) => {
     let html ="";
 
-    //finn button-id og endre format slik at den kan matche produktets id
-    let btn_id = evt.target.id;
-    let num = btn_id[btn_id.length-1];
-
+    //finn button-id
+    let b_id = evt.target.id.slice(-1);
+    
     //Identifiser produkt og push det inn i cart-arrayet
     for (let i=0; i<products.length; i++) {
 
-        if (products[i].id == num) {
+        if (products[i].id == b_id) {
             newItem = products[i];
+            newItem.amount ++;
             cart.push(newItem);
-
-            //Vis at det har kommet en ny vare i handlekurven ved symbolet
-            html = document.getElementById("number_items").innerHTML = `
-                <p>(${cart.length})</p>
-            `;
-            html = document.getElementById("num_items_cart").innerHTML = `
-            <p>(${cart.length} varer)</p>
-        `;
         }
     }
 
     //Vis cart-arrayet i handlekurven
-    showIncart();
+    showInCart();
 
     //Finn totalsummen for alle varer
     findTotal();       
-}
+    //Opprett eventlisteners til buttons
 
-let buttons = document.querySelectorAll(".btn_submit");
-for (const button of buttons) {
-    button.addEventListener("click", addToCart)
 }
 
 
-//Show items in cart
-const showIncart = () => {
+
+//------------------------------------------------------------------------------
+//SHOW ITEMS IN CART
+const showInCart = () => {
+
+    //Tøm htmlen for elementer som ligger der fra før
+    document.getElementById("new_item").innerHTML = "";
+
+
+    let handlekurv = document.getElementById("cartH3");
+    
+    //Vis antall varer i handlekurven
     if (cart.length > 0) {
-       
-       //Resett totalbeløpet (funker denne?)
-       total=0;
+    
+       if (cart.length === 1) {
+        document.getElementById("num_items_cart").innerHTML = `
+        <p>(${cart.length} vare)</p>`;
+        document.getElementById("number_items").innerHTML = `<p>(${cart.length})</p>`;
 
-       //Tøm htmlen for elementer som ligger der fra før
-       document.getElementById("new_item").innerHTML = "";
+    
+        } else if (cart.length > 1) {
+        document.getElementById("num_items_cart").innerHTML = `
+        <p>(${cart.length} varer)</p>`;
+        document.getElementById("number_items").innerHTML = `<p>(${cart.length})</p>`;
+    }   
+    }
 
-       //Oppretter ny html i handlekurven
-       cart.forEach((el, i) => {
-           document.getElementById("new_item").innerHTML += `
-           <div class="item_wrap" id="item_wrap${el.id}">
-            <div id="item" class="item">
-                <p class="item_heading">${el.name}</p>
-                <p class="item_detail">Str. ${el.size[0]}, ${el.color}</p>
+    //Oppretter ny html i handlekurven
+    cart.forEach((el, i) => {
+
+        //henter amounten til produktet
+        let value = el.amount;
+
+        document.getElementById("new_item").innerHTML += `
+        <div class="item_wrap" id="item_wrap${el.id}">
+        <div id="item" class="item">
+            <p class="item_heading">${el.name}</p>
+            <p class="item_detail">Str. ${el.size[0]}, ${el.color}</p>
+        </div>
+
+        <div>
+            <input type="number" value=${value} class="num_items" id="num_items${i}">
+            <label>stk</label>
             </div>
 
-            <div>
-                <input type="number" value="1" class="num_items" id="num_items${i}">
-                <label>stk</label>
-            </div>
-
-            <h3 id="priceH3" class="price1">${el.price},-</h3>
-            <img id="remove${el.id}" src="../images/icons/x.png" class="icon remove" alt="fjern produktet fra handlelisten">
+        <h3 id="priceH3${i}" class="price1">${findPrice(el)},-</h3>
+        <img id="remove${i}" src="../images/icons/x.png" class="icon remove" alt="fjern produktet fra handlelisten">
             
-            </div>
-           `;
+        </div>
+        `;     
+    }); 
 
-           console.log(cart);
-
-            //Legg til lyttere inni løkka. (Her er det noe kluss)
-            // let get = document.querySelector(`#num_items${i}`);
-            // get.addEventListener("input", () => updatePrice(`num_items${i}`));
-
-            // let get2 = document.querySelector(`#remove${el.id}`);
-            // get2.addEventListener("click", () => removeFromCart(`remove${el.id}`));
-           
-       }); 
-
-       //Oppretter lyttere for remove-ikonet
-       let fjernKnapper = document.querySelectorAll(".remove");
+    //Oppretter lyttere for remove-ikonet
+    let fjernKnapper = document.querySelectorAll(".remove");
        
-       for (const fjernKnapp of fjernKnapper) {
-           fjernKnapp.addEventListener("click", removeFromCart);
-       }
+    for (const fjernKnapp of fjernKnapper) {
+        fjernKnapp.addEventListener("click", removeFromCart);
+    }
 
-       //Oppretter lyttere for input-feltene
-       let inp = document.querySelectorAll(".num_items");
+    //Oppretter lyttere for input-feltene
+    let inp = document.querySelectorAll(".num_items");
        
-       for (const i of inp) {
-           i.addEventListener("input", updatePrice);
-       }
+    for (const i of inp) {
+        i.addEventListener("input", updatePrice);
     }
 }
 
-
-//add all prices and find the total 
+//---------------------------------------------------
+//ADD ALL PRICES AND FIND THE TOTAL 
 const findTotal = () => {
-    
+    total = 0;
+
     cart.forEach(el => {
-        let prices = el.price;
-        prices = Number(prices);
-    
-        total += prices;
-        console.log(total);
+        //Finner prisen på elementet og legger det til totalen
+        total += findPrice(el);
     })
-    
+
     document.getElementById("total").innerHTML = `
-        <h3 id="totalsum" class="price">${total},-</h3>`
+         <h3 id="totalsum" class="price">${total},-</h3>`
 }
 
+//-------------------------------------------------------------
 
 
-//update the price after changing the input value
+//MULTIPLY PRODUCT'S PRICE WITH PRODUCT'S AMOUNT
+const findPrice = (product) => {
+    return product.amount * product.price;
+}
+
+//----------------------------------------------------------------
+
+//FIND PRODUCTS PRICE WHEN THE INPUT IS CHANGED
 const updatePrice = (evt) => {
-    let priceH3 = document.getElementById("priceH3");
+
+    //finner id til dette inputfeltet
+    let i = evt.target.id.slice(-1);
+    
+    //lager en variabel med html-elementet + iden
+    let string = "priceH3"+i;
+
+    //lagrer referansen i en ny variabel
+    let priceH3 = document.getElementById(string);
+
+    //verdien i inputfeltet = antall produkter jeg vil kjøpe
     let number = evt.target.value;
 
-    // let number = document.getElementById(id).value;
-    // number = Number(number);
-    // let priceH3 = document.querySelector(".price1").id;
-    // let onlyNum = priceH3[priceH3.length-1];
-    // console.log(priceH3);
-
-   
+    //amount = verdien av inputfeltet 
+    cart[i].amount = number;
     
-    //HER MÅ JEG ADDE ET NYTT ITEM FOR HVER GANG VALUE ENDRER SEG
+    //ganger amount med pris og endrer H3
+    priceH3.innerHTML = findPrice(cart[i])
 
-    cart.forEach(el=> {
-        
-        
-        let price = el.price;
-        //ASSÅ VIRKER IKKE, men jeg må finne en måte å si at hvis input value er større enn den gamle skal prisen ganges med valuen, og hvis den er mindre skal den---trekkes fra
-        // if(number++) {
-        //     price *= number;
-        // } else (
-        //     price -= price;
-        // )
-        // ]
-        
-        price *= number;
-        
-        
-        priceH3.innerHTML = price;
-    })
+    //oppdaterer totalsummen
     findTotal();
-}
+}    
 
+//------------------------------------------------------------
 
-//remove item from cart HER ER DET EN DEL KLUSS
+//REMOVE PRODUCTS FROM THE CART
 const removeFromCart = (evt) => {
-    let icon_id = evt.target.id;
-    let onlyNum = Number(icon_id[icon_id.length-1]); 
-
-
+    let i = Number(evt.target.id.slice(-1));
     
-    // let x_id = document.getElementById(id).id;
-    // x_id = Number(x_id[x_id.length-1]);
-    
-    console.log(onlyNum);
-    
-   cart.forEach(el => {
-       let product_id = el.id;
-       console.log(product_id);
-       let product_price = el.price;
-       console.log(product_price);
-       
-       if(onlyNum === product_id) {
-           
-            //Tømmer htmlen
-           document.getElementById(`item_wrap${el.id}`).innerHTML = ``;
-           
-           //Fjerner elementet fra cart-arrayet
-           cart.splice([product_id], 1);
-           console.log(cart);
+    //Setter produktets amount til 0
+    cart[i].amount = 0;
 
-            //Endre totalsumVIRKER IKKE
-            total -= product_price;
-            console.log(total);
-           
-            //Vis at totalsummen er endret VIRKERIKKE
-            document.getElementById("total").innerHTML = `
-            <h3 id="totalsum" class="price">${total},-</h3>`
+    //Sletter produktet fra cart
+    cart.splice(i, 1);
 
-            //Vis at elementene er fjerna fra handlekurven ved symbolene
-            html = document.getElementById("number_items").innerHTML = `
-            <p>(${cart.length})</p>
-            `;
+    //finner totalsum og viser den i handlekurven
+    findTotal();
+    showInCart();
 
-            html = document.getElementById("num_items_cart").innerHTML = `
-            <p>(${cart.length} varer)</p>
-            `;
-       }
-       
-   }) 
-   
 }
 
 
-
-
-/*
-export {cart, button, addTocart, showIncart, findTotal, updatePrice};*/
 
 
 

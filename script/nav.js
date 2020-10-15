@@ -6,6 +6,7 @@ let c_u_arr = ['Dunjakker', 'Skalljakker', 'Ulljakker'];
 let allSizes = [86, 92, 98, 104, 110, 116, 122];
 let qualities = ['vannavstøtende', 'vindtett', 'vanntett', 'varm', 'strikk'];
 let colors = ['green', 'red', 'blue', 'black', 'gray'];
+let clr = "";
 let sizeArray = [];
 let catArray = [];
 let attArr = [];
@@ -16,8 +17,8 @@ let attUni = [];
 let clrUni = [];
 let qualFilterArr = [];
 
-
-//Functions
+//---------------------------------------------------------------------------------
+//FILTER ON JACKETS
 const filterJackets = () => {
 
 //Filtrerer ut jakkeelementer
@@ -36,6 +37,8 @@ addColor(jacketArray);
 jakker.addEventListener("click", filterJackets);
 
 //----------------------------------------------------------------------
+
+//ADD UNDER CATHEGORIES TO THE FILTER SECTION
 const addUnderCat = (array) => {
     let html ="";
 
@@ -63,7 +66,9 @@ const addUnderCat = (array) => {
     document.getElementById("cat_content").innerHTML = html;
 }
 
+//----------------------------------------------------------------------------------------
 
+//ADD SIZES TO THE FILTER SECTION
 const addSizes = (array) => {
     let html ="";
     
@@ -95,13 +100,10 @@ const addSizes = (array) => {
     document.getElementById("size_content").innerHTML = html;
 }
 
+//---------------------------------------------------------------------------
 
 
-
-
-
-
-//Adds "Funksjon" filters
+//ADD ATTRIBUTES TO THE FILTER SECTION
 const addAttribute = (a) => {
     let html = "";
 
@@ -117,6 +119,7 @@ const addAttribute = (a) => {
             }
         }
     }
+
     //lag ny liste med bare sizeUnike verdier
     attUni = attArr.filter(onlysizeUnique);
     console.log(attUni);
@@ -130,14 +133,12 @@ const addAttribute = (a) => {
         `
    })
        
-   document.getElementById("att_content").innerHTML = html;
- 
-    
+   document.getElementById("att_content").innerHTML = html;   
 }
 
 
-//Adds color filters
-let clr = "";
+//ADD COLORS TO THE FILTER SECTION
+
 const addColor = (a) => {
     let html = "";
 
@@ -192,13 +193,16 @@ const addColor = (a) => {
     document.getElementById("color_content").innerHTML = html;
 }
 
+//--------------------------------------------------------------------------------------
 
- //Sjekk om verdien er unik
+ //CHECK IF AN ARRAYS VALUE IS UNIQUE
  const onlysizeUnique = (value, index, self) => {
     return self.indexOf(value) === index;
     }
 
-//Functions
+
+//-------------------------------------------------------------------------------------------
+//FILTER ON PANTS
 const filterPants = () => {
 
     //Filtrerer ut jakkeelementer
