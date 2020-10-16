@@ -209,6 +209,16 @@ const addColor = (a) => {
     document.getElementById("color_content").innerHTML = html;
 }
 
+
+const addClrDet = (el) => {
+    for (let i = 0; i < el.color.length; i++) {
+        if (el.color[i] === "red") {
+            
+        }
+    }
+    
+}
+
 //--------------------------------------------------------------------------------------
 
  //CHECK IF AN ARRAYS VALUE IS UNIQUE

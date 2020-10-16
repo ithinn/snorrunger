@@ -11,3 +11,10 @@ const addEventButton = () => {
     button.addEventListener("click", addToCart);
 }
 }
+
+const addEventProd = () => {
+    let product = document.querySelectorAll(".product");
+    for (const p of product) {
+        p.addEventListener("click", seePopUp);
+    }
+}
