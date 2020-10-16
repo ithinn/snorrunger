@@ -282,11 +282,10 @@ button:hover, #btn_small:hover {
        
 }
 
-
 /*Produkt*/
 .product {
     width: 25em;
-    height: auto;
+    height: 53em;
     padding-bottom: 2em;
     display: flex;
     flex-direction: column;
@@ -295,6 +294,18 @@ button:hover, #btn_small:hover {
     
 }
 
+#prod_overlay {
+    width: 25em;
+    height: 53em;
+    background-color: rgba(0, 0, 0, 0.1);
+    position: absolute;
+    z-index: -1;
+
+}
+
+#prod_overlay:hover {
+    background-color: rgba(0, 0, 0, 0);
+}
 .product_img {
     width: 100%;
     height: 33em;

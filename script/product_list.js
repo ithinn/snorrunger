@@ -3,7 +3,7 @@ const products =
 	{
 		name: "Dalfonna",
 		cathegory_main: "Jakker",
-		cathegory_under: "Skalljakker",
+		cathegory_under: "Skalljakke",
 		age: 1,
 		color: ['green', 'purple', 'blue'],
 		size: [86, 92, 104],
@@ -150,7 +150,7 @@ const products =
 		url: ['../images/pants/sisotinden_ull1.jpg', '../images/pants/sisotinden_ull2.jpg'],
 		ingress: "Ungen kan rulle i søledammen i timesvis uten å bli våt.",
         description: "",
-        id: 8,
+        id: 9,
 		amount: 0 
     }
     ] 

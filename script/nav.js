@@ -1,9 +1,9 @@
 
 //Global
-const jakker = document.querySelector("#jakker");
-const bukser = document.querySelector("#bukser");
+
+
 let jacketArray = []
-let c_u_arr = ['Dunjakker', 'Skalljakker', 'Ulljakker'];
+let c_u_arr = ['Dunjakke', 'Skalljakke', 'Fleece', 'Regnjakke', "Overtrekksbukse", "Regnbukse", "Ullbukse" ];
 let allSizes = [86, 92, 98, 104, 110, 116, 122];
 let qualities = ['vannavstøtende', 'vindtett', 'vanntett', 'varm', 'strikk'];
 let colors = ['green', 'red', 'blue', 'black', 'gray'];
@@ -18,6 +18,7 @@ let attUni = [];
 let clrUni = [];
 let qualFilterArr = [];
 
+
 //---------------------------------------------------------------------------------
 //FILTER ON JACKETS
 const filterJackets = () => {
@@ -27,8 +28,6 @@ jacketArray = products.filter(function(product) {
     return product.cathegory_main == "Jakker"
 })
 
-console.log(jacketArray);
-
 //Legger dem til i lista
 addObjects(jacketArray)
 addUnderCat(jacketArray);
@@ -36,18 +35,17 @@ addSizes(jacketArray);
 addAttribute(jacketArray);
 addColor(jacketArray);
 
+
+//addEventListeners(buttons, "click", addToCart);
+
+addEventButton();
+addEventTag_cat();
  //Opprett eventlistenere på de nye tagene
- let catTag = document.querySelectorAll(".cat_tag");
- for (const tag of catTag) {
- tag.addEventListener("click", function(){filterUC(catUni)});
- } 
-
-
- addEventButton();
-
+ 
 }
 
 jakker.addEventListener("click", filterJackets);
+
 
 //----------------------------------------------------------------------
 
@@ -74,11 +72,14 @@ const addUnderCat = (array) => {
                  <p>${el}</p>
                  </div>
                 `;
+                
+                //addEventListeners(c_tags, "click", filtArr);
     });
 
-   
+
 
     document.getElementById("cat_content").innerHTML = html;
+    
 }
 
 
@@ -232,6 +233,11 @@ const filterPants = () => {
     addAttribute(pantsArray);
     addColor(pantsArray);
     addEventButton();
-    }
+    addEventTag_cat();
+}
     
     bukser.addEventListener("click", filterPants);
+
+
+ 
+

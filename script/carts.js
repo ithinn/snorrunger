@@ -4,15 +4,16 @@ let cart = [];
 let total = 0;
 let newItem = "";
 let buttons = document.querySelectorAll(".btn_submit");
+const jakker = document.querySelector("#jakker");
+const bukser = document.querySelector("#bukser");
 
 
 //--------------------------------------------------------------
 
 
-
 //ADD ITEMS TO CART
 const addToCart = (evt) => {
-    console.log(evt.target.id);
+    
     let html ="";
 
     //finn button-id
@@ -40,19 +41,14 @@ const addToCart = (evt) => {
 //Generell lytterfunksjon
 // function addEventListeners(array, event, funksjon) {
 //     for (const item of array) {
-//         item.addEventListeners(`${event}`, funksjon);
+//         item.addEventListener(event, funksjon);   
 //     }
 // }
 
-// addEventListener(buttons, `${click}`, addToCart);
+// addEventListeners(buttons, "click", addToCart);
 
-const addEventButton = () => {
-    let buttons = document.querySelectorAll(".btn_submit");
-    for (const button of buttons) {
-    button.addEventListener("click", addToCart);
-}
-}
 
+//Legg til lytter på kjøp-knappene
 addEventButton();
 
 
