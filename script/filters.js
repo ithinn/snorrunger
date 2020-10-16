@@ -1,49 +1,46 @@
 let testArray = [];
 let fillArray = [];
 let uniArray = [];
-const filtArr = (evt) => {
-    let i = evt.target.id;
-    //tagens id
-    console.log(i);
-    
-    products.forEach(element => {
-    // let cat = element.id;  
-    // console.log(cat);
-    
-         if (i === element.cathegory_under) {
-            testArray = products.filter(function(product) {
-                return product.cathegory_under == element.cathegory_under;
-                
-            })
-            console.log("Det virka!");
-            console.log(testArray);
-            // let c= element.cathegory_under;
-            // fillArray.push(c)
-            // console.log(fillArray);
+let prSize = [];
 
-             
-         }
-         
-      })
-    //  uniArray = fillArray.filter(onlysizeUnique);
-    //  console.log(uniArray);
+const filtArr = (evt) => {
+    
+    let tag = evt.target.id;
+    //tagens id
+    console.log(tag);
+    
+    for (let i = 0; i<products.length; i++) {
+
+        let produkt = products[i];
+        let prSize = Number(produkt.size);
+        let prCat = produkt.cathegory_under;
+
+        for (let j = 0; j < prSize.length; j++) {
+           
+            if (tag === prCat) {
+                testArray = products.filter(function(product) {
+                    return product.cathegory_under == produkt.cathegory_under;  
+                })
+                console.log("Det virka!");
+                console.log(testArray);
+               
+
+            } else if (tag==prSize[j]) {
+                testArray = products.filter(function(product) {
+                    return product.size == produkt.size;
+                })
+                console.log("størrelsessortering")
+                console.log(testArray);
+            }
+    } 
+    }  
+    addObjects(testArray);
+    
 }
 
 
-// testArray = products.filter(function(product) {
-//     return product.cathegory_under == e.cathegory_under;
-// })
-
-// console.log(testArray);
-
-
-// let filtArr = [];
-
-// const filterUC = (arr) => {
-//     let filtArr = arr.filter(function(product) {
-//         return product.cathegory_under = "";
-//     })
-//     console.log(filtArr);
+// const clearFilter = (id) => {
+//     let filter = document.getElementBy(id);
+//     filter.innerHTML = "";
 // }
 
-// filterUC(products);

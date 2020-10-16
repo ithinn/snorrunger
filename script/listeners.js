@@ -1,5 +1,5 @@
 const addEventTag_cat = () => {
-    let c_tags = document.querySelectorAll(".cat_tag");
+    let c_tags = document.querySelectorAll(".tag");
     for (const t of c_tags) {
         t.addEventListener("click", filtArr);
     }

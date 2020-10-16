@@ -107,9 +107,9 @@ const addSizes = (array) => {
     sizeUni = sizeArray.filter(onlysizeUnique);
     
     //Sørg for at den nye listen vises på siden
-    sizeUni.forEach(el => {                
+    sizeUni.forEach((el, i) => {                
         html += `
-        <div class="tag">
+        <div id=${el} class="tag">
         <p>${el}</p>
         </div>
         `
@@ -144,7 +144,7 @@ const addAttribute = (a) => {
     //Sørg for at den nye listen vises på siden
     attUni.forEach(el => {                
         html += `
-        <div class="tag">
+        <div id=${el} class="tag">
         <p>${el}</p>
         </div>
         `
@@ -183,26 +183,26 @@ const addColor = (a) => {
     clrUni.forEach(el => {                
         if (el === 'red') {
             html += `
-            <div class="clr_large" style="background-color: red;"></div>
+            <div id=${el} class="clr_large" style="background-color: red;"></div>
             `; 
         } else if (el === 'green') {
             html += `
-            <div class="clr_large" style="background-color: green;"></div>
+            <div id=${el}  class="clr_large" style="background-color: green;"></div>
             `; 
     
         } else if (el === 'blue') {
             html += `
-            <div class="clr_large" style="background-color: blue;"></div>
+            <div id=${el} class="clr_large" style="background-color: blue;"></div>
             `; 
     
         } else if (el === 'black') {
             html += `
-            <div class="clr_large" style="background-color: #333333;"></div>
+            <div id=${el} class="clr_large" style="background-color: #333333;"></div>
             `; 
     
         } else if (el === 'gray') {
             html += `
-            <div class="clr_large" style="background-color: gray;"></div>
+            <div id=${el} class="clr_large" style="background-color: gray;"></div>
             `; 
         }
    })
