@@ -68,7 +68,7 @@ const addUnderCat = (array) => {
     //Sørg for at den nye listen vises på siden
     catUni.forEach((el, i) => {                
         html += `
-                <div id=${i} class="tag cat_tag">
+                <div id=${el} class="tag cat_tag">
                  <p>${el}</p>
                  </div>
                 `;
