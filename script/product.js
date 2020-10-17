@@ -1,20 +1,23 @@
 let popUp = document.querySelector("#grid-container");
-
+let fjern = "";
 
 let klikk=true;
 const seePopUp = (evt) => {
     if (klikk === true) {
         
         popUp.style.opacity = "1";
+        popUp.style.right = "0";
+        popUp.style.top = "30em";
     }
     klikk = !klikk;
-
+    
 
     let html="";
     let prodId = Number(evt.target.id);
+    console.log(prodId);
     products.forEach(e => {
         if(prodId === e.id) {
-            console.log("hei");
+           
             html += `
             <div id="column1">
             <article id="main_container">
@@ -28,12 +31,12 @@ const seePopUp = (evt) => {
             <article id="thumb_container">
                 <img class="thumb_img" id="thumb1" src=${e.url[1]}>
                 <img class="thumb_img" id="thumb2" src=${e.url[2]}>
-                <img class="thumb_img" id="thumb3" src=${e.url[3]}>
+                
             </article>
         </div>
         
         <div id="column2">
-        
+            <img src="../images/icons/x.png" class="remove icon" id="det_remove">
             <article id="description">
                 <h1 id="product_heading">${e.name}</h1>
                 <p id="ingress">${e.ingress}</p>
@@ -65,12 +68,27 @@ const seePopUp = (evt) => {
             </article>
         </div>
             `;
+            
         }
-
+        
     })
     popUp.innerHTML = html;
+    fjern = document.getElementById("det_remove");
+    fjern.addEventListener("click", removeDetail);
+    addEventButton();
 }
 addEventProd();
+
+
+
+const removeDetail = () => {
+        popUp.style.opacity = ".5";
+        popUp.style.right = "200em";
+        popUp.style.top = "30em";
+        
+
+}
+
 
 // let klikkProdukt = true;
 // const seePopUp = (evt) => {

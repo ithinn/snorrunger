@@ -20,7 +20,7 @@ const addObjects = (array) => {
         <div class="img_wrap">
             <img id=${i} class="product_img" src="${array[i].url[0]}">
         </div>
-            <h4>${array[i].name}</h4>
+            <h4 id="${array[i].id}" class="prod_h4">${array[i].name}</h4>
         <h4 class="price">${array[i].price},-</h4>
         <article class="clr_icon" id="colors">
             
@@ -34,6 +34,7 @@ const addObjects = (array) => {
 
     document.getElementById("products-grid").innerHTML = html;
     
+
     
 
     
@@ -41,9 +42,9 @@ const addObjects = (array) => {
 
 }
 
+
+
 addObjects(products);
-
-
 
 
 const funksjon = (array) => {
@@ -98,7 +99,7 @@ const funksjon = (array) => {
     }
 }
 
-funksjon(products);
+
 
  //let clr_icon = document.getElementById("t");
     
@@ -114,3 +115,6 @@ funksjon(products);
     //         document.getElementById("t").style.backgroundColor = "blue";
     //     }
     // }
+
+    
+//export {farger, clr_icon, prod, addObjects, funksjon}

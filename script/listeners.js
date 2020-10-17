@@ -13,8 +13,9 @@ const addEventButton = () => {
 }
 
 const addEventProd = () => {
-    let product = document.querySelectorAll(".product");
+    let product = document.querySelectorAll(".prod_h4");
     for (const p of product) {
         p.addEventListener("click", seePopUp);
     }
 }
+

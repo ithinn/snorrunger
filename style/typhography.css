@@ -35,8 +35,12 @@ h4 {
     font-size: 2rem;
 }
 
-p, .footer_p, .footer_heading {
+p, .footer_p, .footer_heading  {
     font-family: "Open Sans";
+}
+
+button p {
+    font-weight: 400;
 }
 
 p {
@@ -45,6 +49,8 @@ p {
 
 .nav_text:hover {
     color: #73434B;
+    text-decoration: underline;
+    cursor: pointer;
 }
 
 .footer_p, .footer_heading {

@@ -40,6 +40,7 @@ addColor(jacketArray);
 
 addEventButton();
 addEventTag_cat();
+addEventProd();
  //Opprett eventlistenere på de nye tagene
  
 }
@@ -68,9 +69,9 @@ const addUnderCat = (array) => {
     //Sørg for at den nye listen vises på siden
     catUni.forEach((el, i) => {                
         html += `
-                <div id=${el} class="tag cat_tag">
+                <button id=${el} class="tag cat_tag" type="check">
                  <p>${el}</p>
-                 </div>
+                 </button>
                 `;
                 
                 //addEventListeners(c_tags, "click", filtArr);
@@ -109,9 +110,9 @@ const addSizes = (array) => {
     //Sørg for at den nye listen vises på siden
     sizeUni.forEach((el, i) => {                
         html += `
-        <div id=${el} class="tag">
+        <button type="check" id=${el} class="tag">
         <p>${el}</p>
-        </div>
+        </button>
         `
     })
        
@@ -144,9 +145,9 @@ const addAttribute = (a) => {
     //Sørg for at den nye listen vises på siden
     attUni.forEach(el => {                
         html += `
-        <div id=${el} class="tag">
+        <button type="check" id=${el} class="tag">
         <p>${el}</p>
-        </div>
+        </button>
         `
    })
        
@@ -183,26 +184,26 @@ const addColor = (a) => {
     clrUni.forEach(el => {                
         if (el === 'red') {
             html += `
-            <div id=${el} class="clr_large" style="background-color: red;"></div>
+            <button type="radio" name="c" id=${el} class="clr_large" style="background-color: red;"></button>
             `; 
         } else if (el === 'green') {
             html += `
-            <div id=${el}  class="clr_large" style="background-color: green;"></div>
+            <button type="radio" name="c" id=${el}  class="clr_large" style="background-color: green;"></button>
             `; 
     
         } else if (el === 'blue') {
             html += `
-            <div id=${el} class="clr_large" style="background-color: blue;"></div>
+            <button type="radio" name="c" id=${el} class="clr_large" style="background-color: blue;"></button>
             `; 
     
         } else if (el === 'black') {
             html += `
-            <div id=${el} class="clr_large" style="background-color: #333333;"></div>
+            <button type="radio" name="c" id=${el} class="clr_large" style="background-color: #333333;"></button>
             `; 
     
         } else if (el === 'gray') {
             html += `
-            <div id=${el} class="clr_large" style="background-color: gray;"></div>
+            <button type="radio" name="c" id=${el} class="clr_large" style="background-color: gray;"></button>
             `; 
         }
    })
@@ -244,6 +245,7 @@ const filterPants = () => {
     addColor(pantsArray);
     addEventButton();
     addEventTag_cat();
+    addEventProd();
 }
     
     bukser.addEventListener("click", filterPants);
