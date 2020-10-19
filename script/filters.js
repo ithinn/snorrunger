@@ -6,6 +6,8 @@ let prSize = [];
 const filtArr = (evt) => {
     
     let tag = evt.target.innerText;
+    
+
     //tagens id
     console.log(tag);
     
@@ -14,6 +16,7 @@ const filtArr = (evt) => {
     products.forEach(el => {
         if (tag == el.cathegory_under) {
             testArray.push(el);
+            
         }
     })
 
@@ -24,8 +27,49 @@ const filtArr = (evt) => {
             }
         }
     });
+
+    products.forEach(el => {
+        for (let i = 0; i<el.quality1.length; i++) {
+            if (tag == el.quality1[i]) {
+                testArray.push(el);
+            }
+        }
+    });
+
+    // products.forEach(el => {
+    //     for (let i = 0; i<el.color.length; i++) {
+    //         if (tag == el.color[i]) {
+    //             testArray.push(el);
+    //         }
+    //     }
+    // });
+
     addObjects(testArray);
+    console.log(testArray);
 }
+
+const clrFilter = (evt) => {
+    let tag = evt.target.id;
+    
+    testArray = []
+    //tagens id
+    console.log(tag);
+    
+    console.log("Ja!")
+    products.forEach(el => {
+        for (let i = 0; i<el.size.length; i++) {
+            if (tag == el.color[i]) {
+                testArray.push(el);
+            }
+        }
+    });
+    addObjects(testArray);
+} 
+
+
+
+
+
 //     for (let i = 0; i<products.length; i++) {
 
 //         let produkt = products[i];

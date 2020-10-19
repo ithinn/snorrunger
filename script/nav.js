@@ -1,8 +1,7 @@
 
-//Global
-
-
+//Global  
 let jacketArray = []
+let pantsArray = [];
 let c_u_arr = ['Dunjakke', 'Skalljakke', 'Fleece', 'Regnjakke', "Overtrekksbukse", "Regnbukse", "Ullbukse" ];
 let allSizes = [86, 92, 98, 104, 110, 116, 122];
 let qualities = ['vannavstøtende', 'vindtett', 'vanntett', 'varm', 'strikk'];
@@ -17,7 +16,7 @@ let catUni = [];
 let attUni = [];
 let clrUni = [];
 let qualFilterArr = [];
-
+const kategori = document.getElementById("cat_content");
 
 //---------------------------------------------------------------------------------
 //FILTER ON JACKETS
@@ -35,14 +34,15 @@ addSizes(jacketArray);
 addAttribute(jacketArray);
 addColor(jacketArray);
 
-
 //addEventListeners(buttons, "click", addToCart);
 
 addEventButton();
 addEventTag_cat();
 addEventProd();
  //Opprett eventlistenere på de nye tagene
- 
+
+//testArray.push(jacketArray); 
+
 }
 
 jakker.addEventListener("click", filterJackets);
@@ -54,6 +54,9 @@ jakker.addEventListener("click", filterJackets);
 const addUnderCat = (array) => {
     let html ="";
 
+    //kategori.innerHTML = "";
+    catArray = [];
+    console.log(catArray);    
     for (let i = 0; i<array.length; i++) {
         for (let j = 0; j<c_u_arr.length; j++){
             if (array[i].cathegory_under === c_u_arr[j]) {
@@ -90,6 +93,7 @@ const addUnderCat = (array) => {
 //ADD SIZES TO THE FILTER SECTION
 const addSizes = (array) => {
     let html ="";
+    sizeArray = [];
     
     for (let i = 0; i<array.length; i++) {
         
@@ -125,6 +129,7 @@ const addSizes = (array) => {
 //ADD ATTRIBUTES TO THE FILTER SECTION
 const addAttribute = (a) => {
     let html = "";
+    attArr = [];
 
     for (let i=0; i<a.length; i++) {
         
@@ -160,6 +165,8 @@ const addAttribute = (a) => {
 const addColor = (a) => {
     let html = "";
 
+    clrArr = [];
+
     for (let i = 0; i < a.length; i++) {
 
         for (let j = 0; j < colors.length; j++) {
@@ -184,26 +191,26 @@ const addColor = (a) => {
     clrUni.forEach(el => {                
         if (el === 'red') {
             html += `
-            <button type="radio" name="c" id=${el} class="clr_large" style="background-color: red;"></button>
+            <button type="radio" name="c" id=${el} class="clr_large radio_clr" style="background-color: red;"></button>
             `; 
         } else if (el === 'green') {
             html += `
-            <button type="radio" name="c" id=${el}  class="clr_large" style="background-color: green;"></button>
+            <button type="radio" name="c" id=${el}  class="clr_large radio_clr" style="background-color: green;"></button>
             `; 
     
         } else if (el === 'blue') {
             html += `
-            <button type="radio" name="c" id=${el} class="clr_large" style="background-color: blue;"></button>
+            <button type="radio" name="c" id=${el} class="clr_large radio_clr" style="background-color: blue;"></button>
             `; 
     
         } else if (el === 'black') {
             html += `
-            <button type="radio" name="c" id=${el} class="clr_large" style="background-color: #333333;"></button>
+            <button type="radio" name="c" id=${el} class="clr_large radio_clr" style="background-color: #333333;"></button>
             `; 
     
         } else if (el === 'gray') {
             html += `
-            <button type="radio" name="c" id=${el} class="clr_large" style="background-color: gray;"></button>
+            <button type="radio" name="c" id=${el} class="clr_large radio_clr" style="background-color: gray;"></button>
             `; 
         }
    })
@@ -237,6 +244,8 @@ const filterPants = () => {
         return product.cathegory_main == "Bukser"
     })
     
+    
+
     //Legger dem til i lista
     addObjects(pantsArray)
     addUnderCat(pantsArray);
@@ -253,3 +262,8 @@ const filterPants = () => {
 
  
 
+    
+    
+
+    
+    

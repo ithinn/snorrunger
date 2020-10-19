@@ -8,12 +8,6 @@ const addObjects = (array) => {
     let html ="";
 
     for (let i = 0; i < array.length; i++) {
-        
-    
-    
-    
-    console.log(farger);
-        
         html += `
         <article id="${array[i].id}"class="product box">
         <div id="prod_overlay"></div>
@@ -28,15 +22,9 @@ const addObjects = (array) => {
         <button id="btn_${array[i].id}" class="btn_submit">Kjøp nå</button>
         </article>
         `;
-        
-
     }
 
     document.getElementById("products-grid").innerHTML = html;
-    
-
-    
-
     
     
 
@@ -45,6 +33,14 @@ const addObjects = (array) => {
 
 
 addObjects(products);
+addUnderCat(products);
+addSizes(products);
+addAttribute(products);
+addColor(products);
+    
+addEventTag_cat();
+addEventProd();
+addEventClr();
 
 
 const funksjon = (array) => {

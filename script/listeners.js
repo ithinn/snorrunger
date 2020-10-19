@@ -5,17 +5,18 @@ const addEventTag_cat = () => {
     }
 }
 
+
+const addEventClr = () => {
+    let clrTag = document.querySelectorAll(".radio_clr");
+    for (color of clrTag) {
+        color.addEventListener("click", clrFilter);
+    }
+}
+ 
 const addEventButton = () => {
     let buttons = document.querySelectorAll(".btn_submit");
     for (const button of buttons) {
     button.addEventListener("click", addToCart);
 }
-}
-
-const addEventProd = () => {
-    let product = document.querySelectorAll(".prod_h4");
-    for (const p of product) {
-        p.addEventListener("click", seePopUp);
-    }
 }
 

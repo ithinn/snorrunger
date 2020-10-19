@@ -1,6 +1,13 @@
 let popUp = document.querySelector("#grid-container");
 let fjern = "";
 
+const addEventProd = () => {
+    let product = document.querySelectorAll(".prod_h4");
+    for (const p of product) {
+        p.addEventListener("click", seePopUp);
+    }
+}
+
 let klikk=true;
 const seePopUp = (evt) => {
     if (klikk === true) {
