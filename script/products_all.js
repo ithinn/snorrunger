@@ -16,7 +16,7 @@ const addObjects = (array) => {
         </div>
             <h4 id="${array[i].id}" class="prod_h4">${array[i].name}</h4>
         <h4 class="price">${array[i].price},-</h4>
-        <article class="clr_icon" id="colors">
+        <article class="clr_icon colorWrap" id=${array[i].id}>
             
         </article>
         <button id="btn_${array[i].id}" class="btn_submit">Kjøp nå</button>
@@ -38,61 +38,56 @@ addSizes(products);
 addAttribute(products);
 addColor(products);
     
+
+
 addEventTag_cat();
 addEventProd();
 addEventClr();
 
 
 const funksjon = (array) => {
-    let clr_a = document.getElementById("colors");
-    
+    let clr_a = document.querySelector(".colorWrap");
+    let num = [0];
     //Først går jeg gjennom hvert produkt i arrayet
     for (let k = 0; k < array.length; k++) {
 
-       
-        prod = array[k];
-        farger = array[k].color;
-
-
         
-        //Så vil jeg at den skal gå gjennom hver farge i colorArray
-        // for (let l = 0; l<farger.length; l++) {
-        //     if (l) {
-        //         clr_a.innerHTML += `
-        //             <div id=clr${k.id} class="clr_small"></div>
-        //             `;
-        //             console.log("Jadda");
-                    
-        //             clr_icon = document.getElementById(`clr${k.id}`);
-                    
-        //     }
+        //console.log(clr_a);
+        prod = array[k];
+        //console.log(prod);
+        const elementId = document.getElementById(prod.id);
+        //console.log(elementId);
+        //console.log(prod);
+        farger = array[k].color;
+        //console.log(farger);
+        num = farger;
+        //console.log(num);
 
-        //     if (farger[l] == "red") {
-        //         document.getElementById(`clr${k.id}`).style.backgroundColor = "red";
-        //     } else if (farger[l] == "gray") {
-        //         document.getElementById(`clr${k.id}`).style.backgroundColor = "gray";
-        //     }
-        // }
-//Jeg er på sporet, men det funker ikke helt.
-        farger.forEach ((el, i) => {
-            if (el) {
-                clr_a.innerHTML += `
-                    <div id=clr${i} class="clr_small"></div>
-                    `;
-                    console.log("Jadda");
-                    
-                    clr_icon = document.getElementById(`clr${i}`);
-                    
-            }
-
-            if (farger[i] == "red") {
-                document.getElementById(`clr${i}`).style.backgroundColor = "red";
-            } else if (farger[i] == "gray") {
-                document.getElementById(`clr${i}`).style.backgroundColor = "gray";
-            }
-    })
-
+        for (let s in farger) {
+            clr_a.innerHTML += `${prod.color[s]}`
+            //console.log(s);
+        }
+        
+        
+       
     }
+//     farger.forEach ((el, i) => {
+//         if (el) {
+//             clr_a.innerHTML += `
+//                 <div id=clr${i} class="clr_small"></div>
+//                 `;
+//                 console.log("Jadda");
+                
+//                 clr_icon = document.getElementById(`clr${i}`);
+                
+//         }
+
+//         if (farger[i] == "red") {
+//             document.getElementById(`clr${i}`).style.backgroundColor = "red";
+//         } else if (farger[i] == "gray") {
+//             document.getElementById(`clr${i}`).style.backgroundColor = "gray";
+//         }
+// })
 }
 
 
@@ -114,3 +109,4 @@ const funksjon = (array) => {
 
     
 //export {farger, clr_icon, prod, addObjects, funksjon}
+funksjon(products);

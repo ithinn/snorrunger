@@ -39,6 +39,7 @@ addColor(jacketArray);
 addEventButton();
 addEventTag_cat();
 addEventProd();
+addEventClr();
  //Opprett eventlistenere på de nye tagene
 
 //testArray.push(jacketArray); 
@@ -255,6 +256,7 @@ const filterPants = () => {
     addEventButton();
     addEventTag_cat();
     addEventProd();
+    addEventClr();
 }
     
     bukser.addEventListener("click", filterPants);
