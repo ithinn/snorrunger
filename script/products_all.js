@@ -1,13 +1,17 @@
 
-let farger = [];
+//let farger = [];
 let clr_icon = "";
 let prod = "";
 
 //ADD ALL PRODUCTS TO THE SITE
 const addObjects = (array) => {
     let html ="";
+    let fargesymboler = "";
+    let buyThis = "";
 
     for (let i = 0; i < array.length; i++) {
+        let farger = array[i].color;
+        
         html += `
         <article id="${array[i].id}"class="product box">
         <div id="prod_overlay"></div>
@@ -16,17 +20,26 @@ const addObjects = (array) => {
         </div>
             <h4 id="${array[i].id}" class="prod_h4">${array[i].name}</h4>
         <h4 class="price">${array[i].price},-</h4>
-        <article class="clr_icon colorWrap" id=${array[i].id}>
-            
+        <article class="clr_icon colorWrap" id="colorWrap">      
         </article>
-        <button id="btn_${array[i].id}" class="btn_submit">Kjøp nå</button>
+        <article id="buttonWrap">
+            <button id="btn_${array[i].id}" class="btn_submit">Kjøp nå</button>
+        </article>
+       
         </article>
         `;
+
+        fargesymboler = `<h4>hei</h4>`;
+        for (el in farger) {
+            fargesymboler += `
+            <div class="clr_small" style="background-color: ${farger[el]}"></div>
+            `
+        }        
     }
 
     document.getElementById("products-grid").innerHTML = html;
-    
-    
+    document.getElementById("colorWrap").innerHTML = fargesymboler;
+    //document.getElementById("buttonWrap").innerHTML = buyThis;
 
 }
 
@@ -45,33 +58,33 @@ addEventProd();
 addEventClr();
 
 
-const funksjon = (array) => {
-    let clr_a = document.querySelector(".colorWrap");
-    let num = [0];
-    //Først går jeg gjennom hvert produkt i arrayet
-    for (let k = 0; k < array.length; k++) {
+// const funksjon = (array) => {
+//     let clr_a = document.querySelector(".colorWrap");
+//     let num = [0];
+//     //Først går jeg gjennom hvert produkt i arrayet
+//     for (let k = 0; k < array.length; k++) {
 
         
-        //console.log(clr_a);
-        prod = array[k];
-        //console.log(prod);
-        const elementId = document.getElementById(prod.id);
-        //console.log(elementId);
-        //console.log(prod);
-        farger = array[k].color;
-        //console.log(farger);
-        num = farger;
-        //console.log(num);
+//         //console.log(clr_a);
+//         prod = array[k];
+//         //console.log(prod);
+//         const elementId = document.getElementById(prod.id);
+//         //console.log(elementId);
+//         //console.log(prod);
+//         farger = array[k].color;
+//         //console.log(farger);
+//         num = farger;
+//         //console.log(num);
 
-        for (let s in farger) {
-            clr_a.innerHTML += `${prod.color[s]}`
-            //console.log(s);
-        }
+//         for (let s in farger) {
+//             clr_a.innerHTML += `${prod.color[s]}`
+//             //console.log(s);
+//         }
         
         
        
-    }
-//     farger.forEach ((el, i) => {
+//     }
+// //     farger.forEach ((el, i) => {
 //         if (el) {
 //             clr_a.innerHTML += `
 //                 <div id=clr${i} class="clr_small"></div>
@@ -88,7 +101,7 @@ const funksjon = (array) => {
 //             document.getElementById(`clr${i}`).style.backgroundColor = "gray";
 //         }
 // })
-}
+//}
 
 
 
@@ -109,4 +122,4 @@ const funksjon = (array) => {
 
     
 //export {farger, clr_icon, prod, addObjects, funksjon}
-funksjon(products);
+//funksjon(products);

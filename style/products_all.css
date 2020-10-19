@@ -30,6 +30,10 @@
 
 }
 
+#colorWrap {
+    display: flex;
+}
+
 #overlay {
     width: 100%;
     height: 400vh;

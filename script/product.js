@@ -20,9 +20,30 @@ const seePopUp = (evt) => {
     
 
     let html="";
+    
+    let fargesymbol = "";
+
+    let størrelser = "";
+    
+    let buyThis = "";
+
+
+
     let prodId = Number(evt.target.id);
     console.log(prodId);
     products.forEach(e => {
+
+
+        let totalElements = e.color.length;
+        console.log(totalElements);
+
+        let farger = e.color;
+        console.log(farger);
+        
+        let str = e.size;
+
+        
+
         if(prodId === e.id) {
            
             html += `
@@ -49,37 +70,50 @@ const seePopUp = (evt) => {
                 <p id="ingress">${e.ingress}</p>
                 <h2 id="price">${e.price},- </h2>
             </article>
-        
-            <article class="box" id="details">
-                <h3 class="pH3" id="color_heading">Farge</h3>
-                <div class="clr_wrap">
-                
-                <label class="clr_label" for="1st" id="1st">${e.color[0]}</label>
-                <input name="color" type="radio" id="1st" style="border: 5px solid ${e.color[0]}">
-                
-                
-                <label class="clr_label" for="2st"id="2st">${e.color[1]}</label>
-                <input name="color" type="radio" id="2st" style="border: 5px solid ${e.color[1]}">
-                
-                <label class="clr_label" for="3st" id="3st">${e.color[2]}</label>
-                <input name="color" type="radio" id="3st" style="border: 5px solid ${e.color[2]}">
-                
-                </div>
-                <h3 class="pH3" id="size_heading">Størrelse</h3>
-                <div id="sizes" class="tag">
-                    ${e.size}
-                </div>
-                
-        
-                <button id="putIncartBtn" class="btn_submit">Kjøp nå</button>
-            </article>
+            
+            <div class="box" id="details">
+            <article id="clr_details"></article>
+            <article id="size_details"></article>
+            <article id="buy"></article>
+            </div>
         </div>
             `;
+
+            fargesymbol = `<h3 class="pH3" id="color_heading">Farge</h3>
+                         <div class="clr_wrap">`
+            for (el in farger) {
+                fargesymbol += 
+                `
+                <button class="clr_large" type="radio" name="chooseClr" style="background-color: ${farger[el]}; border: none"></button>
+                `;
+            }
+
             
+            størrelser = `<h3 class="pH3" id="color_heading">Størrelser</h3>
+            <div class="clr_wrap">` 
+            
+            for (el in str) {
+                størrelser += `
+                <button type="check" id=${str[el]} class="tag">
+                <p>${str[el]}</p>
+                </button>
+                `
+            }
+
+            buyThis = `
+            <button id="putIncartBtn" class="btn_submit">Kjøp nå</button>
+            `;
         }
+
+
         
     })
     popUp.innerHTML = html;
+    clr_details.innerHTML = fargesymbol;
+    size_details.innerHTML = størrelser;
+    buy.innerHTML = buyThis;
+
+
     fjern = document.getElementById("det_remove");
     fjern.addEventListener("click", removeDetail);
     addEventButton();
@@ -95,6 +129,76 @@ const removeDetail = () => {
         
 
 }
+
+
+
+// <h3 class="pH3" id="color_heading">Farge</h3>
+//                 <div class="clr_wrap">
+                
+//                 <label class="clr_label" for="1st" id="1st">${e.color[0]}</label>
+//                 <input name="color" type="radio" id="1st" style="border: 5px solid ${e.color[0]}">
+                
+//                 <label class="clr_label" for="2st"id="2st">${e.color[1]}</label>
+//                 <input name="color" type="radio" id="2st" style="border: 5px solid ${e.color[1]}">
+                
+//                 <label class="clr_label" for="3st" id="3st">${e.color[2]}</label>
+//                 <input name="color" type="radio" id="3st" style="border: 5px solid ${e.color[2]}">
+                
+//                 </div>
+//                 <h3 class="pH3" id="size_heading">Størrelse</h3>
+//                 <div id="sizes" class="tag">
+//                     ${e.size}
+//                 </div>
+                
+        
+//                 <button id="putIncartBtn" class="btn_submit">Kjøp nå</button>
+
+
+
+
+// const radioCreator = () => {
+            
+        //     let totalElements = e.color.length;
+
+        //     console.log(totalElements);
+        //     const group = "radioGroup";
+        //     let radioButtons = [];
+        
+        //     for (let i = 0; i<totalElements.length; i++) {
+        //         let input = document.header.createElement("input");
+        //         input.name = group;
+        //         input.value = (i+1);
+        //         input.type = "radio";
+        //         if (i === 0) {
+        //             input.checked = "checked";
+        //         }
+        //         radioButtons.push(input);
+        //     }
+        //     console.log(radioButtons);
+        // }
+
+        // radioCreator();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // let klikkProdukt = true;
