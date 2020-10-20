@@ -59,7 +59,8 @@ const showInCart = () => {
     
     //Vis antall varer i handlekurven
     if (cart.length >= 0) {
-        document.getElementById("number_items").innerHTML = `<p>(${cart.length})</p>`;
+        document.getElementById("number_items").innerHTML = `<p>(${cart.length}) varer</p>`;
+        document.getElementById("num_items_cart").innerHTML = `<p>${cart.length} varer</p>`;
     
        if (cart.length === 1) {
         document.getElementById("num_items_cart").innerHTML = `
@@ -115,6 +116,7 @@ const showInCart = () => {
     for (const i of inp) {
         i.addEventListener("input", updatePrice);
     }
+    console.log(cart);
 }
 
 //---------------------------------------------------
@@ -188,16 +190,3 @@ const removeFromCart = (evt) => {
 
 //CONVERT HEX TO COLOR NAMES
 
-const hexToClr = (hex) => {
-    console.log(colorCodes);
-
-    for (let i = 0; i < colorCodes.length; i++) {
-        console.log(hex);
-        console.log(colorCodes[i].clrHex);
-        if (hex == colorCodes[i].clrHex ) {
-            
-            return colorCodes[i].clrName;
-        }
-    }
-    
-}

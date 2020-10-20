@@ -42,7 +42,7 @@ const addObjects = (array) => {
         `+ fargeString + `
         </article>
         <article id="buttonWrap">
-            <button id="btn_${array[i].id}" class="btn_submit">Kjøp</button>
+            <button id="btn_${array[i].id}" class="btn_submit">Les mer</button>
         </article>
         </article>
         `;             

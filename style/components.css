@@ -23,7 +23,7 @@ article {
 
 
 /*Submit-button*/
-.btn_submit {
+.btn_submit, .buyThis {
     color: white;
     background-color: #73434B;
     border: none;
@@ -51,7 +51,7 @@ button:hover, #btn_small:hover {
 }
 
 /*tags*/
-.tag, .tag_checked, .tag_sale {
+.tag, .tag_checked, .tag_sale, .size_tag {
     border: 4px solid #2F3659;
     display: inline-flex;
     padding: 1em;
@@ -64,6 +64,11 @@ button:hover, #btn_small:hover {
 }
 
 .tag:hover {
+    background-color: #A6831B;
+    color: white;
+    cursor: pointer;
+}
+.size_tag:hover {
     background-color: #A6831B;
     color: white;
     cursor: pointer;
@@ -92,6 +97,7 @@ button:hover, #btn_small:hover {
     color: white;
 }
 
+
 .tag_sale {
     border-radius: 50%;
     background-color: #C1272D;
@@ -118,6 +124,10 @@ button:hover, #btn_small:hover {
 .clr_small {
     width: 2em;
     height: 2em;
+}
+
+button[type="radio"]:checked {
+    background-color: black;
 }
 
 /*Filter box*/

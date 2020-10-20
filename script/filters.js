@@ -40,22 +40,28 @@ const filtArr = (evt) => {
     });
 
     addObjects(testArray);
+    addEventButton();
 }
 
 
 const clrFilter = (evt) => {
     let tag = evt.target.id;
-    
+    console.log(tag);
     testArray = []
     
     products.forEach(el => {
-        for (let i = 0; i<el.size.length; i++) {
-            if (tag == el.color[i]) {
+        
+        
+        for (let i = 0; i<el.color.length; i++) {
+            let clrName = hexToClr(el.color[i]);
+            console.log(clrName);
+            if (tag == clrName) {
                 testArray.push(el);
             }
         }
     });
     addObjects(testArray);
+    addEventButton();
     
 } 
 
