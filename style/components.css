@@ -69,8 +69,26 @@ button:hover, #btn_small:hover {
     cursor: pointer;
 }
 
-.tag_checked {
+.tag_checked, .chosen {
     background-color: #A6831B;
+    color: white;
+}
+
+.chosen {
+    display: flex;
+    align-items: center; 
+    justify-content: space-around;
+}
+
+#tag-wrap {
+    display: flex;
+    align-items: center;
+    width: 60%;
+    margin: 0 auto;
+}
+
+.tag:focus {
+    background-color: #a6831b;
     color: white;
 }
 
@@ -91,9 +109,10 @@ button:hover, #btn_small:hover {
     
 }
 
-.clr_large, .clr_label {
-    width: 5em;
-    height: 5em;
+.clr_large {
+    width: 4em;
+    height: 4em;
+    border: none;
 }
 
 .clr_small {

@@ -16,6 +16,11 @@ const addToCart = (evt) => {
     
     let html ="";
 
+    if (colorSelected == null || sizeSelected == null) {
+        alert("Du må velge farge og størrelse.");
+    } else {
+
+
     //finn button-id
     let b_id = evt.target.id.slice(-1);
     
@@ -37,20 +42,10 @@ const addToCart = (evt) => {
     //Opprett eventlisteners til buttons
    
 }
-
-//Generell lytterfunksjon
-// function addEventListeners(array, event, funksjon) {
-//     for (const item of array) {
-//         item.addEventListener(event, funksjon);   
-//     }
-// }
-
-// addEventListeners(buttons, "click", addToCart);
-
+}
 
 //Legg til lytter på kjøp-knappene
 addEventButton();
-
 
 //------------------------------------------------------------------------------
 //SHOW ITEMS IN CART
@@ -84,11 +79,15 @@ const showInCart = () => {
         //henter amounten til produktet
         let value = el.amount;
 
+        let colorTranslated = hexToClr(colorSelected);
+        console.log(colorTranslated);
+
+
         document.getElementById("new_item").innerHTML += `
         <div class="item_wrap" id="item_wrap${el.id}">
         <div id="item" class="item">
             <p class="item_heading">${el.name}</p>
-            <p class="item_detail">Str. ${el.size[0]}, ${el.color}</p>
+            <p class="item_detail">Str. ${sizeSelected}, ${colorTranslated}</p>
         </div>
 
         <div>
@@ -185,9 +184,20 @@ const removeFromCart = (evt) => {
 
 }
 
+//----------------------------------------------------------------
 
+//CONVERT HEX TO COLOR NAMES
 
+const hexToClr = (hex) => {
+    console.log(colorCodes);
 
-
-
-
+    for (let i = 0; i < colorCodes.length; i++) {
+        console.log(hex);
+        console.log(colorCodes[i].clrHex);
+        if (hex == colorCodes[i].clrHex ) {
+            
+            return colorCodes[i].clrName;
+        }
+    }
+    
+}

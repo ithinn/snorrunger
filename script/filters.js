@@ -1,15 +1,18 @@
 let testArray = [];
-let fillArray = [];
-let uniArray = [];
-let prSize = [];
+//Lag lytter som fjerner valgte tagger
 
+const addEventRemoveTag = () => {
+    let chosen = document.querySelectorAll(".chosen");
+    for (const c of chosen) {
+        c.addEventListener("click", removeTag);
+    }
+    }
+
+
+//Filterer produkter ut katgori, størrelse og
 const filtArr = (evt) => {
     
     let tag = evt.target.innerText;
-    
-
-    //tagens id
-    console.log(tag);
     
     testArray=[];
 
@@ -36,26 +39,15 @@ const filtArr = (evt) => {
         }
     });
 
-    // products.forEach(el => {
-    //     for (let i = 0; i<el.color.length; i++) {
-    //         if (tag == el.color[i]) {
-    //             testArray.push(el);
-    //         }
-    //     }
-    // });
-
     addObjects(testArray);
-    console.log(testArray);
 }
+
 
 const clrFilter = (evt) => {
     let tag = evt.target.id;
     
     testArray = []
-    //tagens id
-    console.log(tag);
     
-    console.log("Ja!")
     products.forEach(el => {
         for (let i = 0; i<el.size.length; i++) {
             if (tag == el.color[i]) {
@@ -64,78 +56,25 @@ const clrFilter = (evt) => {
         }
     });
     addObjects(testArray);
+    
 } 
 
 
 
-
-
-//     for (let i = 0; i<products.length; i++) {
-
-//         let produkt = products[i];
-//         let prSize = Number(produkt.size);
-//         let prCat = produkt.cathegory_under;
-
-//         for (let j = 0; j < prSize.length; j++) {
-           
-//             if (tag === prCat) {
-//                 testArray = products.filter(function(product) {
-//                     return product.cathegory_under == produkt.cathegory_under;  
-//                 })
-//                 console.log("Det virka!");
-//                 console.log(testArray);
-               
-
-//             } else if (tag==prSize[j]) {
-//                 testArray = products.filter(function(product) {
-//                     return product.size == produkt.size;
-//                 })
-//                 console.log("størrelsessortering")
-//                 console.log(testArray);
-//             }
-//     } 
-//     }  
-//     addObjects(testArray);
+const makeTag = (id, name) => {
     
-// }
+    document.getElementById("tag-wrap").innerHTML = 
+    `
+    <button id=${id} class="tag chosen">
+                     <p>${name}</p>
+                     </button>
+    `;
+}
 
 
-// // const clearFilter = (id) => {
-// //     let filter = document.getElementBy(id);
-// //     filter.innerHTML = "";
-// // }
 
-// const filtArr = (evt) => {
-    
-//     let tag = evt.target.id;
-//     //tagens id
-//     console.log(tag);
-    
-//     for (let i = 0; i<products.length; i++) {
+const removeTag = () => {
+    console.log("jadda");
+    document.getElementById("tag-wrap").innerHTML = ``;
+}
 
-//         let produkt = products[i];
-//         let prSize = Number(produkt.size);
-//         let prCat = produkt.cathegory_under;
-
-//         for (let j = 0; j < prSize.length; j++) {
-           
-//             if (tag === prCat) {
-//                 testArray = products.filter(function(product) {
-//                     return product.cathegory_under == produkt.cathegory_under;  
-//                 })
-//                 console.log("Det virka!");
-//                 console.log(testArray);
-               
-
-//             } else if (tag==prSize[j]) {
-//                 testArray = products.filter(function(product) {
-//                     return product.size == produkt.size;
-//                 })
-//                 console.log("størrelsessortering")
-//                 console.log(testArray);
-//             }
-//     } 
-//     }  
-//     addObjects(testArray);
-    
-// }

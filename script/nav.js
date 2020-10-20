@@ -1,11 +1,10 @@
-
 //Global  
 let jacketArray = []
 let pantsArray = [];
 let c_u_arr = ['Dunjakke', 'Skalljakke', 'Fleece', 'Regnjakke', "Overtrekksbukse", "Regnbukse", "Ullbukse" ];
 let allSizes = [86, 92, 98, 104, 110, 116, 122];
 let qualities = ['vannavstøtende', 'vindtett', 'vanntett', 'varm', 'strikk'];
-let colors = ['green', 'red', 'blue', 'black', 'gray'];
+let colors = ['#707312', '#c1272d', '#96ACD9', '#333333', '#808080', "#73434b"];
 let clr = "";
 let sizeArray = [];
 let catArray = [];
@@ -16,33 +15,37 @@ let catUni = [];
 let attUni = [];
 let clrUni = [];
 let qualFilterArr = [];
-const kategori = document.getElementById("cat_content");
+
 
 //---------------------------------------------------------------------------------
+
+
 //FILTER ON JACKETS
 const filterJackets = () => {
 
-//Filtrerer ut jakkeelementer og legger dem i et nytt array
+
+//Filtrer ut jakkeelementer og legg dem i et nytt array
 jacketArray = products.filter(function(product) {
     return product.cathegory_main == "Jakker"
 })
 
-//Legger dem til i lista
+//Vis produktene i det nye arryet
 addObjects(jacketArray)
+
+//Vis filtervalg-knapper i filterseksjonen
 addUnderCat(jacketArray);
 addSizes(jacketArray);
 addAttribute(jacketArray);
 addColor(jacketArray);
 
-//addEventListeners(buttons, "click", addToCart);
-
+//Opprett lyttere
 addEventButton();
 addEventTag_cat();
 addEventProd();
 addEventClr();
- //Opprett eventlistenere på de nye tagene
 
-//testArray.push(jacketArray); 
+makeTag("jakke", 'Jakker');
+addEventRemoveTag();
 
 }
 
@@ -55,11 +58,15 @@ jakker.addEventListener("click", filterJackets);
 const addUnderCat = (array) => {
     let html ="";
 
-    //kategori.innerHTML = "";
+    //Nullstill arrayet
     catArray = [];
-    console.log(catArray);    
+    
+    //Loop gjennom argument- arrayet og finn elementer det har til felles med arrayet som inneholder alle underkategorier
+    //Push disse elementene inn i catArray
     for (let i = 0; i<array.length; i++) {
+
         for (let j = 0; j<c_u_arr.length; j++){
+
             if (array[i].cathegory_under === c_u_arr[j]) {
 
                 let c = array[i].cathegory_under;
@@ -67,24 +74,20 @@ const addUnderCat = (array) => {
             }
         }
     }
-    //lag ny liste med bare sizeUnike verdier
+
+    //lag nytt array med bare unike verdier
     catUni = catArray.filter(onlysizeUnique);
     
-    //Sørg for at den nye listen vises på siden
+    //Vis den nye listen på siden som separate tagger
     catUni.forEach((el, i) => {                
         html += `
-                <button id=${el} class="tag cat_tag" type="check">
+                <button id=${el} class="tag cat_tag" type="checkbox">
                  <p>${el}</p>
                  </button>
                 `;
-                
-                //addEventListeners(c_tags, "click", filtArr);
     });
 
-
-
     document.getElementById("cat_content").innerHTML = html;
-    
 }
 
 
@@ -178,7 +181,7 @@ const addColor = (a) => {
                 if(clr === colors[j]) {
 
                     clrArr.push(clr);
-            
+                    console.log(clrArr);
 
                 }
             }
@@ -186,32 +189,39 @@ const addColor = (a) => {
     }; 
 
     //lag ny liste med bare sizeUnike verdier
+    console.log(clrArr);
+    
     clrUni = clrArr.filter(onlysizeUnique);
+    console.log(clrUni);
     
     //Sørg for at den nye listen vises på siden
     clrUni.forEach(el => {                
-        if (el === 'red') {
+        if (el === '#c1272d') {
             html += `
-            <button type="radio" name="c" id=${el} class="clr_large radio_clr" style="background-color: red;"></button>
+            <button type="radio" name="c" id=${el} class="clr_large radio_clr" style="background-color: #c1272d; border: none"></button>
             `; 
-        } else if (el === 'green') {
+        } else if (el === '#707312') {
             html += `
-            <button type="radio" name="c" id=${el}  class="clr_large radio_clr" style="background-color: green;"></button>
-            `; 
-    
-        } else if (el === 'blue') {
-            html += `
-            <button type="radio" name="c" id=${el} class="clr_large radio_clr" style="background-color: blue;"></button>
+            <button type="radio" name="c" id=${el}  class="clr_large radio_clr" style="background-color: #707312;"></button>
             `; 
     
-        } else if (el === 'black') {
+        } else if (el === '#96ACD9') {
+            html += `
+            <button type="radio" name="c" id=${el} class="clr_large radio_clr" style="background-color: #96ACD9;"></button>
+            `; 
+    
+        } else if (el === '#333333') {
             html += `
             <button type="radio" name="c" id=${el} class="clr_large radio_clr" style="background-color: #333333;"></button>
             `; 
-    
-        } else if (el === 'gray') {
+        } else if (el === '#73434b') {
             html += `
-            <button type="radio" name="c" id=${el} class="clr_large radio_clr" style="background-color: gray;"></button>
+            <button type="radio" name="c" id=${el} class="clr_large radio_clr" style="background-color: #73434b;"></button>
+            `; 
+    
+        } else if (el === '#808080') {
+            html += `
+            <button type="radio" name="c" id=${el} class="clr_large radio_clr" style="background-color: #808080;"></button>
             `; 
         }
    })
@@ -257,6 +267,9 @@ const filterPants = () => {
     addEventTag_cat();
     addEventProd();
     addEventClr();
+
+    makeTag("bukse", 'Bukser');
+    addEventRemoveTag();
 }
     
     bukser.addEventListener("click", filterPants);

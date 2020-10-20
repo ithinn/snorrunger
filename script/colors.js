@@ -1,23 +1,23 @@
 const colorCodes = 
     [
     {
-        clrName: 'red',
+        clrName: 'Rød',
         clrHex: "#c1272d"
     },
     {
-        clrName: 'green',
+        clrName: 'Grønn',
         clrHex: "#707312"
     },
     {
-        clrName: 'blue',
+        clrName: 'Blå',
         clrHex: "#96ACD9"
     },
     {
-        clrName: 'black',
+        clrName: 'Svart',
         clrHex: "#333333"
     },
     {
-        clrName: 'gray',
+        clrName: 'Grå',
         clrHex: "#808080"
     }
 ];

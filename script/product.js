@@ -1,6 +1,11 @@
+//Global
 let popUp = document.querySelector("#grid-container");
 let fjern = "";
+let colorSelected;
+let sizeSelected;
 
+
+//Lytter til overskriften (kan fjernes)
 const addEventProd = () => {
     let product = document.querySelectorAll(".prod_h4");
     for (const p of product) {
@@ -8,43 +13,45 @@ const addEventProd = () => {
     }
 }
 
+
+//---------------------------------------------------------------------------- 
+
+//OPPRETT POPUP-VINDU MED DETALJVISNING
 let klikk=true;
 const seePopUp = (evt) => {
+
+    let id = evt.target.id;
+    
     if (klikk === true) {
-        
         popUp.style.opacity = "1";
-        popUp.style.right = "0";
+        popUp.style.right = "10%";
         popUp.style.top = "30em";
+        overlay.style.backgroundColor = "rgba(0, 0, 0, .5)";
+        overlay.style.zIndex = "0";
     }
     klikk = !klikk;
     
 
     let html="";
-    
     let fargesymbol = "";
-
     let størrelser = "";
-    
     let buyThis = "";
 
-
-
-    let prodId = Number(evt.target.id);
-    console.log(prodId);
+    //Finner produktets id og henter ut kun tallet
+    let prodId = Number(id.slice(-1));
+    
+    //Går gjennom produktlista 
     products.forEach(e => {
 
-
         let totalElements = e.color.length;
-        console.log(totalElements);
 
         let farger = e.color;
-        console.log(farger);
-        
+       
         let str = e.size;
 
         
-
-        if(prodId === e.id) {
+        //Oppretter HTML i popupvinduet hvis produkt-iden er den samme som knappens id
+        if(prodId == e.id) {
            
             html += `
             <div id="column1">
@@ -62,9 +69,12 @@ const seePopUp = (evt) => {
                 
             </article>
         </div>
+
+        <div id="columnX">
+        <img src="../images/icons/x.png" class="remove icon" id="det_remove">
         
         <div id="column2">
-            <img src="../images/icons/x.png" class="remove icon" id="det_remove">
+            
             <article id="description">
                 <h1 id="product_heading">${e.name}</h1>
                 <p id="ingress">${e.ingress}</p>
@@ -78,45 +88,61 @@ const seePopUp = (evt) => {
             </div>
         </div>
             `;
-
-            fargesymbol = `<h3 class="pH3" id="color_heading">Farge</h3>
-                         <div class="clr_wrap">`
-            for (el in farger) {
-                fargesymbol += 
-                `
-                <button class="clr_large" type="radio" name="chooseClr" style="background-color: ${farger[el]}; border: none"></button>
-                `;
-            }
-
             
-            størrelser = `<h3 class="pH3" id="color_heading">Størrelser</h3>
-            <div class="clr_wrap">` 
-            
-            for (el in str) {
-                størrelser += `
-                <button type="check" id=${str[el]} class="tag">
-                <p>${str[el]}</p>
-                </button>
-                `
-            }
-
-            buyThis = `
-            <button id="putIncartBtn" class="btn_submit">Kjøp nå</button>
+        //legger inn rikig fargesymbol    
+        fargesymbol = `<h3 class="pH3" id="color_heading">Farge</h3>
+                    <div class="clr_wrap">`
+        for (el in farger) {
+            fargesymbol += 
+            `
+            <button id="colorButton${el.clrName}" class="clr_large clr_radio" type="radio" value="${farger[el]}" name="chooseClr" style="background-color: ${farger[el]}; border: none"></button>
             `;
         }
 
+        //legger inn riktig størrelsetags
+        størrelser = `<h3 class="pH3" id="color_heading">Størrelser</h3>
+        <div class="clr_wrap">` 
+            
+        for (el in str) {
+            størrelser += `
+            <button type="check" id=${str[el]} class="tag size_tag">
+            <p>${str[el]}</p>
+            </button>
+            `
+            }
 
-        
+            buyThis = `
+            <button id="btn_${id}" class="buyThis">Kjøp nå</button>
+            `;
+        }        
     })
+
     popUp.innerHTML = html;
+    
+
+    //Referanse og lytter til fargedetaljene
     clr_details.innerHTML = fargesymbol;
     size_details.innerHTML = størrelser;
     buy.innerHTML = buyThis;
+    let btnId = "btn_" + id;
+    let buyButton = document.getElementById(btnId);
+    buyButton.addEventListener("click", addToCart);
 
+    let clr_radio = document.querySelectorAll(".clr_radio");
+    for (const c of clr_radio) {
+        c.addEventListener("click", getColorFromButton);
+    }
+
+    let sizeButtons = document.querySelectorAll(".size_tag")
+    for (const s of sizeButtons) {
+        s.addEventListener("click", getSizeFromButton);
+    }
 
     fjern = document.getElementById("det_remove");
     fjern.addEventListener("click", removeDetail);
     addEventButton();
+
+    
 }
 addEventProd();
 
@@ -126,10 +152,27 @@ const removeDetail = () => {
         popUp.style.opacity = ".5";
         popUp.style.right = "200em";
         popUp.style.top = "30em";
-        
+        overlay.style.zIndex = "-1"
 
 }
 
+
+const getColorFromButton = (evt) => {
+    let id = evt.target.id;
+    console.log(id);
+    let value = document.getElementById(id).value;
+    colorSelected = value;
+    console.log(colorSelected);
+    return colorSelected;
+}
+
+const getSizeFromButton = (evt) => {
+    let id=evt.target.innerText;
+
+    sizeSelected = Number(id);
+    document.getElementById(sizeSelected).style.border = "#333333";
+    return sizeSelected;
+}
 
 
 // <h3 class="pH3" id="color_heading">Farge</h3>
