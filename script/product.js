@@ -104,22 +104,23 @@ const seePopUp = (evt) => {
         
 
         //legger inn riktig størrelsetags
-        størrelser = `<h3 class="pH3" id="color_heading">Størrelser</h3>
-        <div class="clr_wrap">` 
+        størrelser = `<h3 class="pH3" id="sizeTags">Størrelser</h3>
+        <div class="size_wrap">` 
          
         
         //GJØR OM TIL FOR EACH
-        for (el in str) {
+        str.forEach((el, i) => {
             størrelser += `
-            <input type="radio" id=${str[el]} name="chooseSize" class="size_tag">
-            <label class="size_tag" data-size="${str[el]}" for ${str[el]}><p>${str[el]}</p></label>
-            
-            `
-            }
-
-            buyThis = `
-            <button id="btn_${id}" class="buyThis">Kjøp nå</button>
+            <input type="radio" id=${i} name="chooseSize">
+            <label class="size_tag" data-size="${el}" for ${i}>${el}</label>
             `;
+            
+        }) 
+            
+        buyThis = `
+        <button id="btn_${id}" class="buyThis">Kjøp nå</button>
+        `;
+        
         }        
     })
 

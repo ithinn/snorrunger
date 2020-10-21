@@ -55,14 +55,14 @@ const addObjects = (array) => {
 //----------------------------------------------------------------------------------------
 //Kaller filterfunksjonene slik at det kommer opp alternativer i filterseksjonen
 addObjects(products);
-addUnderCat(products);
-addSizes(products);
-addAttribute(products);
-addColor(products);
+// addUnderCat(products);
+// addSizes(products);
+// addAttribute(products);
+// addColor(products);
     
 
 //Legger til lyttere 
-addEventTag_cat();
-addEventProd();
-addEventClr();
+// addEventTag_cat();
+// addEventProd();
+// addEventClr();
 
