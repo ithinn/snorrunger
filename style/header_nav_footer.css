@@ -5,6 +5,24 @@ header {
     
 }
 
+
+
+#inp_search {
+    font-family: "Exo 2";
+    font-size: 3rem;
+    border: none;
+    border-bottom: 4px solid #2F3659;
+    color: #2F3659;
+    background-color: #f9f9f8;
+    width: 50%;
+}
+
+#search {
+    width: 5em;
+    height: 5em;
+    margin-right: 3em;
+}
+
 #header_top {
     width: 100%;
     height: 10em;
@@ -23,15 +41,24 @@ header {
 #symbols {
     width: 200px;
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-end;
     margin-right: 5em;
 }
 
 nav {
     height: 20em;
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;   
+}
+
+#search_wrapper {
+    width: 100%;
+    height: 10em;
+    display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 nav ul{

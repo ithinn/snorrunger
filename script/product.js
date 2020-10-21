@@ -6,12 +6,12 @@ let sizeSelected;
 
 
 //Lytter til overskriften (kan fjernes)
-const addEventProd = () => {
-    let product = document.querySelectorAll(".prod_h4");
-    for (const p of product) {
-        p.addEventListener("click", seePopUp);
-    }
-}
+// const addEventProd = () => {
+//     let product = document.querySelectorAll(".prod_h4");
+//     for (const p of product) {
+//         p.addEventListener("click", seePopUp);
+//     }
+// }
 
 
 //---------------------------------------------------------------------------- 
@@ -153,7 +153,7 @@ const seePopUp = (evt) => {
 
     
 }
-addEventProd();
+//addEventProd();
 
 
 

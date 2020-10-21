@@ -22,6 +22,11 @@ article {
 }
 
 
+/*Input generelt*/
+input {
+    font-family: "Exo 2";
+}
+
 /*Submit-button*/
 .btn_submit, .buyThis {
     color: white;
@@ -38,6 +43,11 @@ button:hover, #btn_small:hover {
     background-color: #A6831B;
     cursor: pointer;
 }
+
+.btn_submit:active, .buyThis:active {
+    border: 4px solid #2F3659;
+}
+
 
 
 
@@ -330,10 +340,7 @@ button[type="radio"]:checked {
     
 }
 
-.product:active {
-    border: 4px solid #2F3659;
 
-}
 
 #prod_overlay {
     width: 25em;
@@ -375,8 +382,3 @@ button[type="radio"]:checked {
     margin: .5em auto;
 }
 
-.prod_h4:hover {
-    color: #73434B;
-    text-decoration: underline;
-    cursor: pointer;
-}
