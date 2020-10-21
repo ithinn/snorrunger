@@ -35,7 +35,7 @@ h4 {
     font-size: 2rem;
 }
 
-p, .footer_p, .footer_heading  {
+p, .footer_p, .footer_heading, label  {
     font-family: "Open Sans";
 }
 
@@ -43,7 +43,7 @@ button p {
     font-weight: 400;
 }
 
-p {
+p, label {
     font-size: 2rem;
 }
 
