@@ -1,6 +1,12 @@
+ //Identifiser produkt og push det inn i cart-arrayet
+    
+ for (let i=0; i<products.length; i++) {
 
-
-
-    //opprett jakke-tag i tagwrap
-makeTag("jakketag", "Jakke");
-addEventRemoveTag();
+       
+    if (products[i].id == b_id) {
+        newItem = products[i];
+        newItem.amount ++;
+        cart.push(newItem);
+    }
+}
+  

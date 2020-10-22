@@ -8,7 +8,8 @@ let uniCat = [];
 let mainCatArray = [];
 
 
-//Oppretter filterseksjonen
+
+//OPPRETTER FILTERSEKSJONEN
 const viewFilters = () => {
     html = "";
 
@@ -82,7 +83,7 @@ const addCat = (array) => {
     //Vis den nye listen på siden som separate tagger
     uniCat.forEach((el, i) => {                
         html += `
-                <button id=${el} class="tag cat_main" type="checkbox">
+                <button id=${el} class="tag cat_main" value="unchecked" type="checkbox">
                  <p>${el}</p>
                  </button>
                 `;
@@ -90,10 +91,6 @@ const addCat = (array) => {
 
     document.getElementById("cat_main").innerHTML = html;
 }
-
-
-
-
 
 //----------------------------------------------
 //ADD UNDER CATHEGORIES TO THE FILTER SECTION
@@ -123,7 +120,7 @@ const addUnderCat = (array) => {
     //Vis den nye listen på siden som separate tagger
     catUni.forEach((el, i) => {                
         html += `
-                <button id=${el} class="tag cat_tag" type="checkbox">
+                <button id=${el} class="tag cat_tag" value=unchecked type="checkbox">
                  <p>${el}</p>
                  </button>
                 `;
@@ -131,7 +128,6 @@ const addUnderCat = (array) => {
 
     document.getElementById("cat_content").innerHTML = html;
 }
-
 
 
 //----------------------------------------------------------------------------------------
@@ -160,7 +156,7 @@ const addSizes = (array) => {
     //Sørg for at den nye listen vises på siden
     sizeUni.forEach((el, i) => {                
         html += `
-        <button type="check" id="size_${el}" class="tag">
+        <button type="checkbox" value="unchecked" id="size_${el}" class="tag">
         <p>${el}</p>
         </button>
         `
@@ -196,7 +192,7 @@ const addAttribute = (a) => {
     //Sørg for at den nye listen vises på siden
     attUni.forEach(el => {                
         html += `
-        <button type="check" id=${el} class="tag att_tag">
+        <button type="checkbox" value="unchecked" id=${el} class="tag att_tag">
         <p>${el}</p>
         </button>
         `
@@ -231,37 +227,36 @@ const addColor = (a) => {
     }; 
 
     //lag ny liste med bare sizeUnike verdier
-    
     clrUni = clrArr.filter(onlysizeUnique);
     
     //Sørg for at den nye listen vises på siden
     clrUni.forEach((el, i) => {                
         if (el === '#c1272d') {
             html += `
-            <button type="radio" name="c" id="${hexToClr(el)}" class="clr_large radio_clr" style="background-color: #c1272d; border: none"></button>
+            <button type="radio" name="c" id="${hexToClr(el)}" class="clr_large radio_clr" style="background-color: #c1272d; border: none; color: #ffffff;">${hexToClr(el)}</button>
             `; 
         } else if (el === '#707312') {
             html += `
-            <button type="radio" name="c" id="${hexToClr(el)}"  class="clr_large radio_clr" style="background-color: #707312;"></button>
+            <button type="radio" name="c" id="${hexToClr(el)}"  class="clr_large radio_clr" style="background-color: #707312; color: #ffffff;">${hexToClr(el)}</button>
             `; 
     
         } else if (el === '#96acd9') {
             html += `
-            <button type="radio" name="c" id="${hexToClr(el)}" class="clr_large radio_clr" style="background-color: #96acd9;"></button>
+            <button type="radio" name="c" id="${hexToClr(el)}" class="clr_large radio_clr" style="background-color: #96acd9; color: #ffffff;">${hexToClr(el)}</button>
             `; 
     
         } else if (el === '#333333') {
             html += `
-            <button type="radio" name="c" id="${hexToClr(el)}" class="clr_large radio_clr" style="background-color: #333333;"></button>
+            <button type="radio" name="c" id="${hexToClr(el)}" class="clr_large radio_clr" style="background-color: #333333; color: #ffffff;">${hexToClr(el)}</button>
             `; 
         } else if (el === '#73434b') {
             html += `
-            <button type="radio" name="c" id="${hexToClr(el)}" class="clr_large radio_clr" style="background-color: #73434b;"></button>
+            <button type="radio" name="c" id="${hexToClr(el)}" class="clr_large radio_clr" style="background-color: #73434b; color: #ffffff;">${hexToClr(el)}</button>
             `; 
     
         } else if (el === '#808080') {
             html += `
-            <button type="radio" name="c" id="${hexToClr(el)}" class="clr_large radio_clr" style="background-color: #808080;"></button>
+            <button type="radio" name="c" id="${hexToClr(el)}" class="clr_large radio_clr" style="background-color: #808080; color: #ffffff;">${hexToClr(el)}</button>
             `; 
         }
    })
@@ -269,10 +264,9 @@ const addColor = (a) => {
 }
 
 
-    
+//KONVERTER HEX TIL FARGENAVN    
 const hexToClr = (hex) => {
    
-
     for (let i = 0; i < colorCodes.length; i++) {
      
         if (hex == colorCodes[i].clrHex ) {
@@ -280,20 +274,9 @@ const hexToClr = (hex) => {
             return colorCodes[i].clrName;
         }
     }
-    
 }
 
 
-//Legg til lytter på boksen
-
-// const addClrDet = (el) => {
-//     for (let i = 0; i < el.color.length; i++) {
-//         if (el.color[i] === "red") {
-            
-//         }
-//     }
-    
-// }
 
 //--------------------------------------------------------------------------------------
 
@@ -302,72 +285,140 @@ const hexToClr = (hex) => {
     return self.indexOf(value) === index;
     }
 
+//-------------------------------------------------------------------
+
+//Kall funksjonene som fyller filterseksjonen med filtermuligheter
+addCat(products)
+addUnderCat(products);
+addSizes(products)
+addColor(products)
+addAttribute(products)
 
 
-
-
-
-    addCat(products)
-    addUnderCat(products);
-    addSizes(products)
-    addColor(products)
-    addAttribute(products)
-
-
-    filterWrap.addEventListener("click", (e) => {
-        if(e.target.nodeName === "BUTTON") {
-            console.log("Det virker!");
-            applyFilter(e);
+//Legg til lyttere på alle buttons på filterseksjonen
+filterWrap.addEventListener("click", (e) => {
+    if(e.target.nodeName === "BUTTON") {
+        applyFilter(e);
         }
-    })
+})
 
 //---------------------------------------------------------------------------------
+let mainCatChoosen = false,underCatChoosen = false, sizeCatSelected = false;
+let mainHolderArray = [], subHolderArray = [], sizeHolderArray = [];
+// let mainCatChoosen = false;
+// let underCatChoosen = false;
+// let sizeCatselected = false;
+
+// let mainHolderArray = [];
+// let subHolderArray = [];
+// let sizeHolderArray = [];
 
 
 const applyFilter = (evt) => {
     let buttonId = evt.target.id;
-    console.log(buttonId);
 
-    const subCat = item => item.cathegory_under === buttonId;
-    const mainCat = item => item.cathegory_main === buttonId;
+    //Endrer value til en checkbox basert på om den er checked eller ikke, og endrer farger hvis den er det. 
+    if (evt.target.value == "unchecked"){
+        evt.target.value = "checked";
+        evt.target.style.backgroundColor = "red";
+    } else if (evt.target.value == "checked") {
+        evt.target.value = "unchecked";
+        evt.target.style.backgroundColor = "#f9f9f8";
+        evt.target.style.color = "black";
+    }
 
-    console.log(evt.target.className);
+    console.log("Value er: " + evt.target.value);
 
+    //Lager lytter for filtrer-knappen. 
+    let btnFilter = document.getElementById("clearFilters");
+    btnFilter.addEventListener("click", checkForChecks);
+    
+}
 
-    //filter(subCat, products);
-    //filter(mainCat, products);
+const filterSizes = (value, products) => {
+    const result = [];
+    for (let product of products) {
 
-const subCatArray = filter(subCat, products);
-const mainCatArray = filter(mainCat, products);
-
-
-
-console.log(mainCatArray);
-console.log(subCatArray);
-// products.filter(mainCat);
-// products.filter(subCat);
-
-    // if (evt.target.className === "tag cat_tag") {
-    //     console.log(r);
-    //     console.log("huur" );
-    // } else if (evt.target.className === "tag cat_main") {
-    //     filter(subCat, products);
-    //     console.log(r2);
-    //     console.log("jippi"); 
-    // }
+        for (let item of product.size) {
+            if (item === value) {
+                result.push(product);
+            }
+        }
+    }
+    return result;
 }
 
 
 //Generell filterfunksjon
-const filter = (predicate, collection) => {
+const filter = (condition, collection) => {
     const result = [];
 
     for (let item of collection) {
-        if (predicate(item)) {
+        if (condition(item)) {
             result.push(item);
         }
     }
-    addObjects(result);
     return result;
-    
+}
+
+
+//Fjern filtre
+const removeFilters = (evt) => {
+    mainCatChoosen = false;
+    underCatChoosen = false;
+    sizeCatSelected = false;
+    addObjects(products);
+    addSizes(products);
+    addCat(products);
+    addUnderCat(products);
+}
+
+//Oppretter lytter for Tøm-filter-knappen
+const clearBtn = document.getElementById("clearFiltersReal");
+clearBtn.addEventListener("click", removeFilters);
+
+
+const checkForChecks = (evt) => {
+    let tempArray = [];
+    let mainIs = false;
+    let catIs = false;
+    let sizeIs = false;
+    let resultArray = [];
+    let tag = document.querySelectorAll(".tag");
+
+    for (let i = 0; i < tag.length; i++) {
+        if (tag[i].value == "checked") {
+            tempArray.push(tag[i]);
+        }
+    }
+    console.log(tempArray);
+
+    let array = [];
+    for (let i = 0; i < tempArray.length; i++) {
+
+        if (tempArray[i].className == "tag cat_main") {
+            console.log("tempArray id: " + tempArray[i]);
+            const mainCat = item => item.cathegory_main === tempArray[i].id;
+            
+            resultArray = filter(mainCat, products);
+            mainIs = true;
+            console.log("Første del av if-løkka har slått inn");
+            
+
+        } else if (tempArray[i].className == "tag cat_tag") {
+
+            const subCat = item => item.cathegory_under == tempArray[i].id;
+            if (mainIs) {
+                array = filter(subCat, resultArray);
+            } else {
+                array = filter(subCat, products);
+            }
+            catIs = true;
+            console.log(tempArray);
+            
+        } else if (tempArray[i].className == "tag cat_size") {
+
+        }
+    }
+    addObjects(array);
 }

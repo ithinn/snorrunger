@@ -1,3 +1,4 @@
+//BRUKES AV HEXTOCOLOR-FUNKSJONEN
 const colorCodes = 
     [
     {

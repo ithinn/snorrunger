@@ -1,1 +1,0 @@
-let allUnderCathegories = ['Dunjakker', 'Skalljakker', 'Ulljakker' ];

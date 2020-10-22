@@ -4,16 +4,6 @@ let fjern = "";
 let colorSelected;
 let sizeSelected;
 
-
-//Lytter til overskriften (kan fjernes)
-// const addEventProd = () => {
-//     let product = document.querySelectorAll(".prod_h4");
-//     for (const p of product) {
-//         p.addEventListener("click", seePopUp);
-//     }
-// }
-
-
 //---------------------------------------------------------------------------- 
 
 //OPPRETT POPUP-VINDU MED DETALJVISNING
@@ -30,7 +20,6 @@ const seePopUp = (evt) => {
         overlay.style.zIndex = "0";
     }
     klikk = !klikk;
-    
 
     let html="";
     let fargesymbol = "";
@@ -43,20 +32,16 @@ const seePopUp = (evt) => {
     //Går gjennom produktlista 
     products.forEach(e => {
 
-        let totalElements = e.color.length;
-
         let farger = e.color;
-       
         let str = e.size;
 
-        
         //Oppretter HTML i popupvinduet hvis produkt-iden er den samme som knappens id
         if(prodId == e.id) {
            
             html += `
             <div id="column1">
             <article id="main_container">
-                <img id="main_img" src=${e.url[0]}>
+                <img id="main_img" alt="Foto av ${e.cathegory_main} med produktnavn ${e.name}" src=${e.url[0]}>
                 <div id="arrows">
                     <img id="arrow_l" src="../images/icons/arrow_left.png">
                     <img id="arrow_r" src="../images/icons/arrow_right.png">
@@ -64,8 +49,8 @@ const seePopUp = (evt) => {
             </article>
         
             <article id="thumb_container">
-                <img class="thumb_img" id="thumb1" src=${e.url[1]}>
-                <img class="thumb_img" id="thumb2" src=${e.url[2]}>
+                <img class="thumb_img" alt="Foto av ${e.cathegory_main} med produktnavn ${e.name}" id="thumb1" src=${e.url[1]}>
+                <img class="thumb_img" alt="Foto av ${e.cathegory_main} med produktnavn ${e.name}" id="thumb2" src=${e.url[2]}>
                 
             </article>
         </div>
@@ -89,96 +74,98 @@ const seePopUp = (evt) => {
         </div>
             `;
             
-        //legger inn rikig fargesymbol    
-        fargesymbol = `<h3 class="pH3" id="color_heading">Farge</h3>
+        //legger inn fargeoverskrift og fargesymboler
+        fargesymbol = `<h3 class="pH3" id="color_heading">Velg farge</h3>
                     <div class="clr_wrap">`
         farger.forEach ((el, i) => {
             fargesymbol += 
             `
-           
             <input id="colorButton${i}" type="radio" name="chooseClr">
-            <label class="clr_radio clr_large" data-colorcode="${el}" for="colorButton${i}" style="background-color: ${el}"></label>
+            <label class="clr_radio clr_large" data-colorcode="${el}" for="colorButton${i}" style="background-color: ${el}; color: #ffffff; display=flex; align-items: center; justify-content: center;">${hexToClr(el)}</label>
             `;
         })
             
-        
-
-        //legger inn riktig størrelsetags
-        størrelser = `<h3 class="pH3" id="sizeTags">Størrelser</h3>
-        <div class="size_wrap">` 
-         
-        
-        //GJØR OM TIL FOR EACH
+        //legger inn størrelsesoverskrift og størrelsestagger
+        størrelser = `<h3 class="pH3" id="sizeTags">Velg størrelse</h3>
+                    <div class="size_wrap">` 
         str.forEach((el, i) => {
             størrelser += `
             <input type="radio" id=${i} name="chooseSize">
             <label class="size_tag" data-size="${el}" for ${i}>${el}</label>
             `;
-            
         }) 
-            
+        
+        //legger inn Kjøp nå-knapp
         buyThis = `
+        <div class="alert"></div>
         <button id="btn_${id}" class="buyThis">Kjøp nå</button>
         `;
-        
         }        
     })
 
     popUp.innerHTML = html;
-    
 
-    //Referanse og lytter til fargedetaljene
+    //Viser farger, størrelser og kjøp-knapp i html-en
     clr_details.innerHTML = fargesymbol;
     size_details.innerHTML = størrelser;
-
     buy.innerHTML = buyThis;
 
+    
+    //Lytter for kjøp-knappen
     let btnId = "btn_" + id;
     let buyButton = document.getElementById(btnId);
     buyButton.addEventListener("click", addToCart);
+    buyButton.addEventListener("click", checkChart);
 
+    //Lytter for farge-knappene
     let clr_radio = document.querySelectorAll(".clr_radio");
     for (const c of clr_radio) {
         c.addEventListener("click", getColorFromButton);
     }
 
+    //Lytter for størrelsesknappene
     let sizeButtons = document.querySelectorAll(".size_tag")
     for (const s of sizeButtons) {
         s.addEventListener("click", getSizeFromButton);
     }
 
+    //Lytter for fjern-popup
     fjern = document.getElementById("det_remove");
     fjern.addEventListener("click", removeDetail);
-    addEventButton();
-
-    
+    addEventButton();   
 }
-//addEventProd();
 
+//-----------------------------------------------------------------------------
 
-
+//FJERNER POPUP-VINDU
 const removeDetail = () => {
         popUp.style.opacity = ".5";
         popUp.style.right = "200em";
         popUp.style.top = "30em";
         overlay.style.zIndex = "-1"
-
 }
 
+//------------------------------------------------------------------------------
+//HENTER FARGEN BRUKEREN HAR VALGT OG SENDER DEN TIL HANDLEKURVEN(?)
 const getColorFromButton = (evt) => {
     
     // let value = evt.target.value;
     
     colorSelected = evt.target.dataset.colorcode;
+    console.log(colorSelected);
+    //document.querySelector(".alert").innerHTML = "";
     //evt.target.style.border = "4px solid blue";
     //document.getElementById(colorSelected).style.border = "5px solid black";
-    return hexToClr(evt.target.value)
+    return hexToClr(evt.target.value);
     //colorSelected;
 }
 
+//---------------------------------------------------------------------------------
+
+//HENTER STØRRELSEN BRUKEREN HAR VALGT OG SENDER DEN TIL HANDLEKURVEN(?)
 const getSizeFromButton = (evt) => {
     //let id=evt.target.innerText;
-
+    document.querySelector(".alert").innerHTML = "";
     sizeSelected = evt.target.dataset.size;
     console.log(sizeSelected);
     //document.getElementById(sizeSelected).style.backgroundColor = "#A6831B";

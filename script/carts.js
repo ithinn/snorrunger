@@ -7,32 +7,75 @@ let buttons = document.querySelectorAll(".btn_submit");
 const jakker = document.querySelector("#jakker");
 const bukser = document.querySelector("#bukser");
 
-
 //--------------------------------------------------------------
+const onlyOne = (buttonId) => {
+    let bool = false;
+    for (let pro of cart) {
+        if (pro.id == buttonId) {
+            bool = true;
+        }
+    }
+    return bool;
+}
 
 
-//ADD ITEMS TO CART
+//LEGG TIL PRODUKTER I CART-ARRAYET
 const addToCart = (evt) => {
     
     let html ="";
 
+ //finn button-id
+ let b_id = evt.target.id.slice(-1);
+
+
+    //Tvinger brukeren til å velge størrelse og farge
     if (colorSelected == null || sizeSelected == null) {
-        alert("Du må velge farge og størrelse.");
+        alert("Du må velge farge og størrelse før du legger produktet i handlekurven.");
+    } else if (onlyOne(b_id)) {
+        alert("Denne ligger i handlekurven fra før")
     } else {
 
-
-    //finn button-id
-    let b_id = evt.target.id.slice(-1);
     
-    //Identifiser produkt og push det inn i cart-arrayet
-    for (let i=0; i<products.length; i++) {
+   
+    
+     //Identifiser produkt og push det inn i cart-arrayet
+    
+ for (let i=0; i<products.length; i++) {
 
-        if (products[i].id == b_id) {
-            newItem = products[i];
-            newItem.amount ++;
-            cart.push(newItem);
-        }
+       
+    if (products[i].id == b_id) {
+        newItem = products[i];
+        newItem.amount ++;
+        cart.push(newItem);
     }
+}
+  
+    //Identifiser produkt og push det inn i cart-arrayet
+    
+    // for (let i=0; i<products.length; i++) {
+    //    // console.log(i);
+        
+    //     for (let j = 0; j<cart.length; j++) {
+    //         //console.log(cart[j]);
+    //     }
+
+
+
+    //     if (products[i].id == b_id && cart.includes(i) == false) {
+    //         newItem = products[i];
+    //         newItem.amount ++;
+    //         cart.push(newItem);
+    //         //console.log("Der ble den valgt");
+    //     } else {
+    //         //alert("Denne varen ligger allerede i handlekurven");
+    //         //console.log("Denne ligger her fra før");
+    //         //document.querySelector(".alert").innerHTML = `<h4>Denne varen har du allerede valgt </h4>`
+    //     }
+    // }
+            
+    // for (let j=0; j<cart.length; j++) {
+            
+    // }
 
     //Vis cart-arrayet i handlekurven
     showInCart();
@@ -44,11 +87,19 @@ const addToCart = (evt) => {
 }
 }
 
+const checkChart = (evt) => {
+    let b_id = evt.target.id.slice(-1);
+    console.log("HEI");
+}
+
+
+
 //Legg til lytter på kjøp-knappene
 addEventButton();
 
 //------------------------------------------------------------------------------
-//SHOW ITEMS IN CART
+
+//VIS ELEMENTENE I CART-ARRAYET I HANDLEKURVEN
 const showInCart = () => {
 
     //Tøm htmlen for elementer som ligger der fra før
@@ -81,7 +132,7 @@ const showInCart = () => {
         let value = el.amount;
 
         let colorTranslated = hexToClr(colorSelected);
-        console.log(colorTranslated);
+        //console.log(colorTranslated);
 
 
         document.getElementById("new_item").innerHTML += `
@@ -120,7 +171,8 @@ const showInCart = () => {
 }
 
 //---------------------------------------------------
-//ADD ALL PRICES AND FIND THE TOTAL 
+
+//LEGG SAMMEN ALLE PRISER OG FINN TOTALSUMMEN
 const findTotal = () => {
     total = 0;
 
@@ -135,15 +187,14 @@ const findTotal = () => {
 
 //-------------------------------------------------------------
 
-
-//MULTIPLY PRODUCT'S PRICE WITH PRODUCT'S AMOUNT
+//MULTIPLISER PRODUKTETS PRICE MED PRODUKTETS AMOUNT
 const findPrice = (product) => {
     return product.amount * product.price;
 }
 
 //----------------------------------------------------------------
 
-//FIND PRODUCTS PRICE WHEN THE INPUT IS CHANGED
+//FINN PRODUKTETS PRIS NÅR INPUTEN ENDRES 
 const updatePrice = (evt) => {
 
     //finner id til dette inputfeltet
@@ -170,7 +221,7 @@ const updatePrice = (evt) => {
 
 //------------------------------------------------------------
 
-//REMOVE PRODUCTS FROM THE CART
+//FJERN PRODUKTER FRA HANDLEKURVEN
 const removeFromCart = (evt) => {
     let i = Number(evt.target.id.slice(-1));
     
@@ -186,7 +237,4 @@ const removeFromCart = (evt) => {
 
 }
 
-//----------------------------------------------------------------
-
-//CONVERT HEX TO COLOR NAMES
 

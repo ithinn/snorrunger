@@ -27,11 +27,12 @@ const søkeord = ["jakker", "bukser", "regnbukse", "skalljakke", "overtrekksbuks
 let i = 0;
 
 const settPlaceholder = () => {
-    const ord = søkeord[i];
+    
     if(i >=søkeord.length) {
         i = 0;
     }
     
+    const ord = søkeord[i];
     input.placeholder = 'Søk etter ' + ord;
     i++;
 }

@@ -70,7 +70,8 @@ button:hover, #btn_small:hover {
     margin-top: 2em;
     color: #2F3659;
     background-color: white;
-    font-family: "Open Sans"
+    font-family: "Open Sans";
+   
 }
 
 .tag:hover {
@@ -78,16 +79,21 @@ button:hover, #btn_small:hover {
     color: white;
     cursor: pointer;
 }
+
+
 .size_tag:hover {
     background-color: #A6831B;
     color: white;
     cursor: pointer;
 }
 
+
+
+/*
 .tag_checked, .chosen {
     background-color: #A6831B;
     color: white;
-}
+}*/
 
 .chosen {
     display: flex;

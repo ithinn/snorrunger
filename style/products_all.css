@@ -11,6 +11,8 @@
     grid-column: 1 / span 1;
 }
 
+
+
 #tag-wrap {
     
     display: flex;
@@ -52,4 +54,8 @@
     height: 400vh;
     position: absolute;
     z-index: -1;
+}
+
+.radio_clr {
+    margin-bottom: 2em;
 }
