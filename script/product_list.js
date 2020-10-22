@@ -14,7 +14,8 @@ const products =
         description: "",
 		id: 0,
 		amount: 0, 
-		colorChosen: ""
+		colorChosen: "",
+		sizeChosen: 0
 	},
 	{
 		name: "Dirdalnes",
@@ -30,7 +31,9 @@ const products =
         description: "",
 		id: 1,
 		amount: 0, 
-		colorChosen: "" 
+		colorChosen: "",
+		sizeChosen: 0
+		
 		
 	},
 	{
@@ -47,7 +50,8 @@ const products =
         description: "",
         id: 2,
 		amount: 0, 
-		colorChosen: "" 
+		colorChosen: "",
+		sizeChosen: 0 
 	},
 	{
 		name: "Nissedal",
@@ -63,7 +67,8 @@ const products =
         description: "",
         id: 3,
 		amount: 0, 
-		colorChosen: "" 
+		colorChosen: "",
+		sizeChosen: 0 
 	},
 	{
 		name: "Vestland",
@@ -79,7 +84,8 @@ const products =
         description: "",
         id: 4,
 		amount: 0, 
-		colorChosen: "" 
+		colorChosen: "",
+		sizeChosen: 0 
 	},
 
 //------------------------------------------------------------------------------------------
@@ -92,12 +98,13 @@ const products =
 		size: [116, 122],
 		quality1: ["vindtett"],
 		price: "229",
-		url: ['../images/pants/dalfonna_vattert1.jpg', '../images/pants/dalfonna_vattert2.jpg'],
+		url: ['../images/pants/dalfonna_vattert1.jpg', '../images/pants/dalfonna_vattert2.jpg', '../images/pants/dalfonna_vattert2.jpg'],
 		ingress: "Perfekt overtrekksbukse når gjørma setter inn.",
         description: "",
         id: 5,
 		amount: 0, 
-		colorChosen: "" 
+		colorChosen: "",
+		sizeChosen: 0 
 	},
 	{
 		name: "Harestua",
@@ -113,7 +120,8 @@ const products =
         description: "",
         id: 6,
 		amount: 0, 
-		colorChosen: "" 
+		colorChosen: "",
+		sizeChosen: 0 
     },
     {
 		name: "Fluppilupp",
@@ -129,7 +137,8 @@ const products =
         description: "",
         id: 7,
 		amount: 0, 
-		colorChosen: "" 
+		colorChosen: "",
+		sizeChosen: 0 
     },
     {
 		name: "Robust",
@@ -140,12 +149,13 @@ const products =
 		size: [86, 110, 116, 122],
 		quality1: ["vindtett", 'vanntett', "strikk"],
 		price: "499",
-		url: ['../images/pants/robust1.jpg', '../images/pants/robust2.jpg'],
+		url: ['../images/pants/robust1.jpg', '../images/pants/robust2.jpg', '../images/pants/robust2.jpg'],
 		ingress: "Ungen kan rulle i søledammen i timesvis uten å bli våt.",
         description: "",
         id: 8,
 		amount: 0, 
-		colorChosen: "" 
+		colorChosen: "",
+		sizeChosen: 0
     },
     {
 		name: "Fulikuli",
@@ -156,12 +166,13 @@ const products =
 		size: [86, 110, 116, 122],
 		quality1: ["varm"],
 		price: "499",
-		url: ['../images/pants/sisotinden_ull1.jpg', '../images/pants/sisotinden_ull2.jpg'],
+		url: ['../images/pants/sisotinden_ull1.jpg', '../images/pants/sisotinden_ull2.jpg', '../images/pants/sisotinden_ull2.jpg'],
 		ingress: "Ungen kan rulle i søledammen i timesvis uten å bli våt.",
         description: "",
         id: 9,
 		amount: 0, 
-		colorChosen: "" 
+		colorChosen: "",
+		sizeChosen: 0
     }
     ] 
 ;

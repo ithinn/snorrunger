@@ -92,7 +92,7 @@ const seePopUp = (evt) => {
         str.forEach((el, i) => {
             størrelser += `
             <input type="radio" id=${i} name="chooseSize">
-            <label class="size_tag" data-size="${el}" for ${i}>${el}</label>
+            <label class="size_tag" data-size="${el}" for ${i}><p class="labelP">${el}</p></label>
             `;
         }) 
         
@@ -155,10 +155,11 @@ const getColorFromButton = (evt) => {
     colorSelected = hexToClr(evt.target.dataset.colorcode);
     
     
-    products.colorChosen = colorSelected;
+   
+    console.log(colorSelected);
 
     //products.colorChosen = evt.target.dataset.colorcode;
-    console.log(products.colorChosen);
+   
     //document.querySelector(".alert").innerHTML = "";
     //evt.target.style.border = "4px solid blue";
     //document.getElementById(colorSelected).style.border = "5px solid black";

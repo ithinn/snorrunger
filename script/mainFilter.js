@@ -152,11 +152,12 @@ const addSizes = (array) => {
     }
     //lag ny liste med bare sizeUnike verdier
     sizeUni = sizeArray.filter(onlysizeUnique);
+    sizeUni.sort(function(a,b){return a-b});
     
     //Sørg for at den nye listen vises på siden
     sizeUni.forEach((el, i) => {                
         html += `
-        <button type="checkbox" value="unchecked" id="size_${el}" class="tag">
+        <button type="checkbox" value="unchecked" id=${el} class="tag cat_size">
         <p>${el}</p>
         </button>
         `
@@ -229,34 +230,35 @@ const addColor = (a) => {
     //lag ny liste med bare sizeUnike verdier
     clrUni = clrArr.filter(onlysizeUnique);
     
+    
     //Sørg for at den nye listen vises på siden
     clrUni.forEach((el, i) => {                
         if (el === '#c1272d') {
             html += `
-            <button type="radio" name="c" id="${hexToClr(el)}" class="clr_large radio_clr" style="background-color: #c1272d; border: none; color: #ffffff;">${hexToClr(el)}</button>
+            <button value="unchecked" type="radio" name="c" id="${hexToClr(el)}" class="tag clr_large radio_clr" style="background-color: #c1272d; color: #ffffff;">${hexToClr(el)}</button>
             `; 
         } else if (el === '#707312') {
             html += `
-            <button type="radio" name="c" id="${hexToClr(el)}"  class="clr_large radio_clr" style="background-color: #707312; color: #ffffff;">${hexToClr(el)}</button>
+            <button value="unchecked" type="radio" name="c" id="${hexToClr(el)}"  class="tag clr_large radio_clr" style="background-color: #707312; color: #ffffff;">${hexToClr(el)}</button>
             `; 
     
         } else if (el === '#96acd9') {
             html += `
-            <button type="radio" name="c" id="${hexToClr(el)}" class="clr_large radio_clr" style="background-color: #96acd9; color: #ffffff;">${hexToClr(el)}</button>
+            <button value="unchecked" type="radio" name="c" id="${hexToClr(el)}" class="tag clr_large radio_clr" style="background-color: #96acd9; color: #ffffff;">${hexToClr(el)}</button>
             `; 
     
         } else if (el === '#333333') {
             html += `
-            <button type="radio" name="c" id="${hexToClr(el)}" class="clr_large radio_clr" style="background-color: #333333; color: #ffffff;">${hexToClr(el)}</button>
+            <button value="unchecked" type="radio" name="c" id="${hexToClr(el)}" class="tag clr_large radio_clr" style="background-color: #333333; color: #ffffff;">${hexToClr(el)}</button>
             `; 
         } else if (el === '#73434b') {
             html += `
-            <button type="radio" name="c" id="${hexToClr(el)}" class="clr_large radio_clr" style="background-color: #73434b; color: #ffffff;">${hexToClr(el)}</button>
+            <button value="unchecked" type="radio" name="c" id="${hexToClr(el)}" class="tag clr_large radio_clr" style="background-color: #73434b; color: #ffffff;">${hexToClr(el)}</button>
             `; 
     
         } else if (el === '#808080') {
             html += `
-            <button type="radio" name="c" id="${hexToClr(el)}" class="clr_large radio_clr" style="background-color: #808080; color: #ffffff;">${hexToClr(el)}</button>
+            <button value="unchecked" type="radio" name="c" id="${hexToClr(el)}" class="tag clr_large radio_clr" style="background-color: #808080; color: #ffffff;">${hexToClr(el)}</button>
             `; 
         }
    })
@@ -320,18 +322,18 @@ const applyFilter = (evt) => {
     //Endrer value til en checkbox basert på om den er checked eller ikke, og endrer farger hvis den er det. 
     if (evt.target.value == "unchecked"){
         evt.target.value = "checked";
-        evt.target.style.backgroundColor = "red";
+        evt.target.style.backgroundColor = "#A6831B";
+        evt.target.style.color = "white";
     } else if (evt.target.value == "checked") {
         evt.target.value = "unchecked";
         evt.target.style.backgroundColor = "#f9f9f8";
         evt.target.style.color = "black";
     }
 
+    mainFilter(evt);
+
     console.log("Value er: " + evt.target.value);
 
-    //Lager lytter for filtrer-knappen. 
-    let btnFilter = document.getElementById("clearFilters");
-    btnFilter.addEventListener("click", checkForChecks);
     
 }
 
@@ -348,6 +350,31 @@ const filterSizes = (value, products) => {
     return result;
 }
 
+const filterAtt = (value, products) => {
+    const result = [];
+    for (let product of products) {
+
+        for (let item of product.quality1) {
+            if (item === value) {
+                result.push(product);
+            }
+        }
+    }
+    return result;
+}
+
+const filterClr = (value, products) => {
+    const result = [];
+    for (let product of products) {
+
+        for (let item of product.color) {
+            if (hexToClr(item) == value) {
+                result.push(product);
+            }
+        }
+    }
+    return result;
+}
 
 //Generell filterfunksjon
 const filter = (condition, collection) => {
@@ -378,47 +405,59 @@ const clearBtn = document.getElementById("clearFiltersReal");
 clearBtn.addEventListener("click", removeFilters);
 
 
-const checkForChecks = (evt) => {
+const mainFilter = (evt) => {
     let tempArray = [];
-    let mainIs = false;
-    let catIs = false;
-    let sizeIs = false;
-    let resultArray = [];
+    let resultArray = products;
     let tag = document.querySelectorAll(".tag");
+
 
     for (let i = 0; i < tag.length; i++) {
         if (tag[i].value == "checked") {
             tempArray.push(tag[i]);
         }
     }
-    console.log(tempArray);
-
-    let array = [];
+    console.log(tempArray[0]);
     for (let i = 0; i < tempArray.length; i++) {
-
+        console.log(tempArray[i].className);
         if (tempArray[i].className == "tag cat_main") {
-            console.log("tempArray id: " + tempArray[i]);
-            const mainCat = item => item.cathegory_main === tempArray[i].id;
-            
-            resultArray = filter(mainCat, products);
-            mainIs = true;
-            console.log("Første del av if-løkka har slått inn");
-            
+           const mainCat = item => item.cathegory_main == tempArray[i].id
+           resultArray = filter(mainCat, products); 
+           
 
         } else if (tempArray[i].className == "tag cat_tag") {
-
             const subCat = item => item.cathegory_under == tempArray[i].id;
-            if (mainIs) {
-                array = filter(subCat, resultArray);
-            } else {
-                array = filter(subCat, products);
-            }
-            catIs = true;
-            console.log(tempArray);
+            resultArray = filter(subCat, resultArray);
             
-        } else if (tempArray[i].className == "tag cat_size") {
 
+        } else if (tempArray[i].className == "tag cat_size") {
+            let val = Number(tempArray[i].id);
+            resultArray = filterSizes(val, resultArray);
+            
+
+        } else if(tempArray[i].className == "tag att_tag") {
+            resultArray = filterAtt(tempArray[i].id, resultArray);
+            
+
+        } else if (tempArray[i].className == "tag clr_large radio_clr") {
+            resultArray = filterClr(tempArray[i].id, resultArray);
+            console.log(tempArray[i].id);
+
+        }  
+
+
+        if (resultArray.length === 0) {
+            alert("Ingen produkter matcher søket ditt");
+            
         }
     }
-    addObjects(array);
+    console.log(resultArray);
+    addObjects(resultArray);
+    addEventButton();
 }
+
+// const addStuff = (resultArray) => {
+//     addUnderCat(resultArray); 
+//     addSizes(resultArray);
+//     addColor(resultArray);
+//     addAttribute(resultArray);
+// }

@@ -5,13 +5,15 @@ console.log(typeof(val));
 const findProducts = (product, name) => {
     
     const productReturned = product.filter(el => {
-        return el.cathegory_main.toLowerCase() === name.toLowerCase() || el.name.toLowerCase() === name.toLowerCase() || el.cathegory_under.toLowerCase() === name.toLowerCase();
+        return el.cathegory_main.toLowerCase() === name.toLowerCase() || el.name.toLowerCase() === name.toLowerCase() || el.cathegory_under.toLowerCase() === name.toLowerCase(); 
+        //|| name.toLowerCase() === el.name.startsWith(name.toLowerCase()); 
     })
     addObjects(productReturned);
     addEventButton();
     
     return productReturned
 }
+
 
 const funksjon = () => {
     

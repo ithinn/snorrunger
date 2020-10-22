@@ -45,7 +45,10 @@ const addToCart = (evt) => {
     
 
     if (products[i].id == b_id) {
+        console.log(sizeSelected);
         newItem = products[i];
+        newItem.colorChosen = colorSelected;
+        newItem.sizeChosen = sizeSelected;
         newItem.amount ++;
         cart.push(newItem);
     }
@@ -133,7 +136,7 @@ const showInCart = (clr) => {
         <div class="item_wrap" id="item_wrap${el.id}">
         <div id="item" class="item">
             <p class="item_heading">${el.name}</p>
-            <p class="item_detail">Str. ${sizeSelected}, ${colorSelected}</p>
+            <p class="item_detail">Str. ${el.sizeChosen}, ${el.colorChosen}</p>
         </div>
 
         <div>
