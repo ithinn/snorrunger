@@ -42,7 +42,8 @@ const addToCart = (evt) => {
     
  for (let i=0; i<products.length; i++) {
 
-       
+    
+
     if (products[i].id == b_id) {
         newItem = products[i];
         newItem.amount ++;
@@ -83,15 +84,9 @@ const addToCart = (evt) => {
     //Finn totalsummen for alle varer
     findTotal();       
     //Opprett eventlisteners til buttons
-   
+   console.log(cart);
 }
 }
-
-const checkChart = (evt) => {
-    let b_id = evt.target.id.slice(-1);
-    console.log("HEI");
-}
-
 
 
 //Legg til lytter på kjøp-knappene
@@ -100,7 +95,7 @@ addEventButton();
 //------------------------------------------------------------------------------
 
 //VIS ELEMENTENE I CART-ARRAYET I HANDLEKURVEN
-const showInCart = () => {
+const showInCart = (clr) => {
 
     //Tøm htmlen for elementer som ligger der fra før
     document.getElementById("new_item").innerHTML = "";
@@ -130,16 +125,15 @@ const showInCart = () => {
 
         //henter amounten til produktet
         let value = el.amount;
-
+        //let color = el.colorChosen;
         let colorTranslated = hexToClr(colorSelected);
         //console.log(colorTranslated);
-
 
         document.getElementById("new_item").innerHTML += `
         <div class="item_wrap" id="item_wrap${el.id}">
         <div id="item" class="item">
             <p class="item_heading">${el.name}</p>
-            <p class="item_detail">Str. ${sizeSelected}, ${colorTranslated}</p>
+            <p class="item_detail">Str. ${sizeSelected}, ${colorSelected}</p>
         </div>
 
         <div>
@@ -167,7 +161,7 @@ const showInCart = () => {
     for (const i of inp) {
         i.addEventListener("input", updatePrice);
     }
-    console.log(cart);
+    
 }
 
 //---------------------------------------------------

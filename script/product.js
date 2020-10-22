@@ -2,8 +2,9 @@
 let popUp = document.querySelector("#grid-container");
 let fjern = "";
 let colorSelected;
-let sizeSelected;
 
+let sizeSelected;
+let clrChosen;
 //---------------------------------------------------------------------------- 
 
 //OPPRETT POPUP-VINDU MED DETALJVISNING
@@ -81,7 +82,7 @@ const seePopUp = (evt) => {
             fargesymbol += 
             `
             <input id="colorButton${i}" type="radio" name="chooseClr">
-            <label class="clr_radio clr_large" data-colorcode="${el}" for="colorButton${i}" style="background-color: ${el}; color: #ffffff; display=flex; align-items: center; justify-content: center;">${hexToClr(el)}</label>
+            <label class="clr_radio clr_large" data-colorcode="${el}" for="colorButton${i}" style="background-color: ${el}; color: #ffffff; display=flex; align-items: center; justify-content: center;"><p class="labelP">${hexToClr(el)}</p></label>
             `;
         })
             
@@ -115,7 +116,7 @@ const seePopUp = (evt) => {
     let btnId = "btn_" + id;
     let buyButton = document.getElementById(btnId);
     buyButton.addEventListener("click", addToCart);
-    buyButton.addEventListener("click", checkChart);
+    //buyButton.addEventListener("click", checkChart);
 
     //Lytter for farge-knappene
     let clr_radio = document.querySelectorAll(".clr_radio");
@@ -151,8 +152,13 @@ const getColorFromButton = (evt) => {
     
     // let value = evt.target.value;
     
-    colorSelected = evt.target.dataset.colorcode;
-    console.log(colorSelected);
+    colorSelected = hexToClr(evt.target.dataset.colorcode);
+    
+    
+    products.colorChosen = colorSelected;
+
+    //products.colorChosen = evt.target.dataset.colorcode;
+    console.log(products.colorChosen);
     //document.querySelector(".alert").innerHTML = "";
     //evt.target.style.border = "4px solid blue";
     //document.getElementById(colorSelected).style.border = "5px solid black";

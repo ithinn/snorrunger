@@ -13,8 +13,8 @@ const products =
 		ingress: "Jakken er nydelig på skitur, i akebakken og på vei til barnehagen en kald høstdag",
         description: "",
 		id: 0,
-		amount: 0 
-        
+		amount: 0, 
+		colorChosen: ""
 	},
 	{
 		name: "Dirdalnes",
@@ -29,7 +29,9 @@ const products =
 		ingress: "Perfekt mellomplagg på kalde høstdager.",
         description: "",
 		id: 1,
-		amount: 0 
+		amount: 0, 
+		colorChosen: "" 
+		
 	},
 	{
 		name: "Moltehei",
@@ -44,7 +46,8 @@ const products =
 		ingress: "Denne jakken holder vinden ute når høsten setter inn.",
         description: "",
         id: 2,
-		amount: 0 
+		amount: 0, 
+		colorChosen: "" 
 	},
 	{
 		name: "Nissedal",
@@ -59,7 +62,8 @@ const products =
 		ingress: "Varm og god når høst blir til vinter.",
         description: "",
         id: 3,
-		amount: 0 
+		amount: 0, 
+		colorChosen: "" 
 	},
 	{
 		name: "Vestland",
@@ -74,7 +78,8 @@ const products =
 		ingress: "Holder poden tørr når regnet siler ned.",
         description: "",
         id: 4,
-		amount: 0 
+		amount: 0, 
+		colorChosen: "" 
 	},
 
 //------------------------------------------------------------------------------------------
@@ -91,7 +96,8 @@ const products =
 		ingress: "Perfekt overtrekksbukse når gjørma setter inn.",
         description: "",
         id: 5,
-		amount: 0 
+		amount: 0, 
+		colorChosen: "" 
 	},
 	{
 		name: "Harestua",
@@ -106,7 +112,8 @@ const products =
 		ingress: "Detter ikke av - uansett hvor aktiv ungen er.",
         description: "",
         id: 6,
-		amount: 0 
+		amount: 0, 
+		colorChosen: "" 
     },
     {
 		name: "Fluppilupp",
@@ -121,7 +128,8 @@ const products =
 		ingress: "Holder ungen varm og tørr - uten at hen merker at den er på.",
         description: "",
         id: 7,
-		amount: 0 
+		amount: 0, 
+		colorChosen: "" 
     },
     {
 		name: "Robust",
@@ -136,7 +144,8 @@ const products =
 		ingress: "Ungen kan rulle i søledammen i timesvis uten å bli våt.",
         description: "",
         id: 8,
-		amount: 0 
+		amount: 0, 
+		colorChosen: "" 
     },
     {
 		name: "Fulikuli",
@@ -151,7 +160,8 @@ const products =
 		ingress: "Ungen kan rulle i søledammen i timesvis uten å bli våt.",
         description: "",
         id: 9,
-		amount: 0 
+		amount: 0, 
+		colorChosen: "" 
     }
     ] 
 ;
