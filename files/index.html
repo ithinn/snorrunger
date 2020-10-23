@@ -10,28 +10,18 @@
     <link rel="stylesheet" href="../style/header_nav_footer.css">
     <link rel="stylesheet" href="../style/products_all.css">
     <link rel="stylesheet" href="../style/product.css">
-    <link href="../fonts/Exo2-SemiBold.ttf" rel="stylesheet">
-    <link href="../fonts/Exo2-Bold.ttf" rel="stylesheet">
-    <link href="../fonts/Exo2-Regular.ttf" rel="stylesheet">
-    <link href="../fonts/OpenSans-Bold.ttf" rel="stylesheet">
-    <link href="../fonts/OpenSans-Regular.ttf" rel="stylesheet">
     
-     <!--
-    <script src="../script/main.js" type="module"></script>-->
     <script src="../script/colors.js" defer></script>
     <script src="../script/product_list.js" defer></script>
     <script src="../script/search.js" defer></script>
-    <!--<script src="../script/nav.js" defer></script>
-    <script src="../script/filters.js" defer></script>-->
     <script src="../script/mainFilter.js" defer></script>
     <script src="../script/product.js" defer></script>
     <script src="../script/listeners.js" defer></script>
     <script src="../script/products_all.js" defer></script>
     <script src="../script/carts.js" defer></script>
-    <script src="../script/size-filter.js" defer></script>
     <script src="../script/cartStyle.js" defer></script>
-   
 </head>
+
 <body>
     <!--Slår inn når handlekurven eller popup er aktiv-->
     <div id="overlay"></div>
@@ -42,7 +32,7 @@
         <div id="header_top">
             <img id="logo" src="../images/icons/logo.png" alt="Snørrungers logo">
             <div id="symbols">
-                <img class="icon" id="cart" src="../images/icons/cart.png" alt="Lenke til internsøk">
+                <img class="icon" id="cart" src="../images/icons/cart.png" alt="">
                 <div id="number_items"></div>
             </div>
         </div>
@@ -51,71 +41,36 @@
         <nav>
             <h2>Finn ditt produkt</h2>
             <div id="search_wrapper">
-                <img class="icon" id="search" src="../images/icons/search_symbol.png" alt="Lenke til internsøk">
+                <img class="icon" id="search" src="../images/icons/search_symbol.png" alt="">
                 <input type="search" id="inp_search" value="", placeholder="Søk etter produkter">
+                <button id="clearSearch" class="filterBtn">Nullstill søk</button>
             </div>
         </nav>
     </header>
+    
 
-    <!--Viser hvilke tager som er valgt KAN SLETTESNBNBNBNBNBNBNBNB-->
+    <!--Nullstiller filter-->
     <section id ="tag-wrap">
-        <button id="clearFiltersReal">Tøm filter</button>
+        <button id="clearFiltersReal" class="filterBtn">Tøm filter</button>
     </section>     
     
+
     <!--Alt innhold under headeren-->
     <section id="content-wrap">
         
         <!--Filterseksjonen-->
         <div id="filter_wrap"></div>
-            <!--<article>
-                <div class="box filter_container" id="cathegory">
-                    <h3>Kategori</h3>
-                    
-                    <img class="icon rem_filter" src="../images/icons/+.png">
-                    <div class="filter_content" id="cat_content"></div>
-                </div>
-            </article>
-            <article>
-                <div class="box filter_container" id="size">
-                    <h3>Størrelse</h3>
-                    <img class="icon rem_filter" src="../images/icons/+.png">
-                    <div class="filter_content" id="size_content"></div>
-                    
-                </div>
-            </article>
-            <article>
-                <div class="box filter_container" id="attribute">
-                    <h3>Funksjon</h3>
-                    <img class="icon rem_filter" src="../images/icons/+.png">
-                    <div id="att_content"></div>
-                </div>
-            </article>
-            <article>
-                <div class="box filter_container" id="color">
-                    <h3>Farge</h3>
-                    <img class="icon" src="../images/icons/+.png">
-                    <div id="color_content"></div>
-                </div>
-            </article>
-            <article>
-                <div class="box filter_container" id="price">
-                    <h3>Pris</h3>
-                    <div id="price_content"></div>
-                    <img class="icon" src="../images/icons/+.png">
-                </div>
-            </article>-->
-        
-
-        
+            
         <!--Produktlisten-->    
         <section id="products-grid"></section>
 
     </section>
 
+
     <!--Pop-up når den er aktiv-->
     <section class="box" id="grid-container"></section>
     
-    
+
     <!--Handlekurv når den er aktiv-->
     <section id="cart_section">
         <article id="cart_wrap" class="box">

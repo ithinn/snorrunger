@@ -1,3 +1,6 @@
+/*Inneholder styling for popup-vinduet med detaljvisning for produktet*/
+
+/*Bildekarusell*/
 .thumb_img {
     width: 10em;
     height: 15em;
@@ -9,17 +12,6 @@
     object-fit: cover;
 }
 
-#arrow_l, #arrow_r {
-    width: 3em;
-    height: 4em;
-    
-}
-
-#det_remove {
-    position: relative;
-    left: 30em;
-}
-
 #arrows {
     display: flex;
     width: 100%;
@@ -28,6 +20,21 @@
     top: -20em;
 }
 
+#arrow_l, #arrow_r {
+    width: 3em;
+    height: 4em;
+}
+
+
+/*Fjern-ikon*/
+#det_remove {
+    position: relative;
+    right: -50em;
+    
+}
+
+
+/*Selve popup-vinduet*/
 #grid-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -42,19 +49,17 @@
     opacity: .5;
     margin: 0 auto;
     justify-content: center;
-
-}
-
-#column1 {
-    grid-column: 1 / span 1;
-    grid-row: 1 / span 1;
     
 }
 
-#putIncartBtn {
-    width: 100%;
+/*Venstre kolonne*/
+#column1 {
+    grid-column: 1 / span 1;
+    grid-row: 1 / span 1; 
 }
 
+
+/*Høyre kolonne*/
 .buyThis {
     width: 100%;
 }
@@ -64,51 +69,11 @@
     grid-row: 1 / span 1;
     display: flex;
     flex-direction: column;
-}
-
-.clr_label {
-    background-color: red;
-    font-size: 1rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 1em;
-}
-
-.clr_label:hover {
-    border: 4px solid #333333;
-}
-
-.clr_wrap {
-    display: flex;
-    width: 100%;
-    margin-bottom: 2em;
-}
-
-input[type=radio] {
-    width: 1px;
-    height: 1px;
-    opacity: 0;
-    position: absolute;
-    
-}
-input[type=radio] + label{
-    width: 50px;
-    height: 50px;
-    text-align: center;
-    position: relative;
-    
-    
-    
-}
-input[type=radio]:checked + label{
-    
-    box-shadow: 0px 0px 3px 5px rgba(0,0,0,0.5);
+    margin-left: 3em;
 }
 
 
-
-
+/*Boks med farge- og størrelsesvalg*/
 #details {
     width: 90%;
     height: auto;
@@ -117,36 +82,42 @@ input[type=radio]:checked + label{
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-
-}
-
-.pH3, #sizes {
-    margin: .5em;
-}
-
-#putIncartBtn {
-    margin-top: 1em;
-}
-
-#column2 {
-    margin-left: 3em;
-}
-
-#product_heading, #ingress, #price {
-    margin-bottom: .5em;
 }
 
 .labelP {
     position: relative;
     top: .9em;
     font-size: 1.5rem;
-
 }
 
-.labelPsize {
-    position: relative;
-    top: -.7em;
-    left: -.7em;
+.clr_wrap {
+    display: flex;
+    width: 100%;
+    margin: 2em;
+}
+
+input[type=radio] {
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    position: absolute; 
+}
+
+input[type=radio] + label{
+    width: 50px;
+    height: 50px;
     text-align: center;
-    font-size: 1.8rem;
+    position: relative; 
+}
+
+input[type=radio]:checked + label{
+    border: 4px solid #A6831B;
+   
+}
+
+.clr_radio {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: .5em;
 }

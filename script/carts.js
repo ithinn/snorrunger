@@ -8,6 +8,7 @@ const jakker = document.querySelector("#jakker");
 const bukser = document.querySelector("#bukser");
 
 //--------------------------------------------------------------
+//SJEKK OM DET VALGTE PRODUKTET LIGGER I HANDLEKURVEN FRA FØR
 const onlyOne = (buttonId) => {
     let bool = false;
     for (let pro of cart) {
@@ -18,15 +19,15 @@ const onlyOne = (buttonId) => {
     return bool;
 }
 
+//---------------------------------------------------------------------------------
 
 //LEGG TIL PRODUKTER I CART-ARRAYET
 const addToCart = (evt) => {
     
     let html ="";
 
- //finn button-id
- let b_id = evt.target.id.slice(-1);
-
+    //finn button-id
+    let b_id = evt.target.id.slice(-1);
 
     //Tvinger brukeren til å velge størrelse og farge
     if (colorSelected == null || sizeSelected == null) {
@@ -35,62 +36,27 @@ const addToCart = (evt) => {
         alert("Denne ligger i handlekurven fra før")
     } else {
 
-    
-   
-    
      //Identifiser produkt og push det inn i cart-arrayet
     
- for (let i=0; i<products.length; i++) {
+        for (let i=0; i<products.length; i++) {
 
+            if (products[i].id == b_id) {
+                console.log(sizeSelected);
+                newItem = products[i];
+                newItem.colorChosen = colorSelected;
+                newItem.sizeChosen = sizeSelected;
+                newItem.amount ++;
+                cart.push(newItem);
+            }
+        }
     
+        //Vis cart-arrayet i handlekurven
+        showInCart();
 
-    if (products[i].id == b_id) {
-        console.log(sizeSelected);
-        newItem = products[i];
-        newItem.colorChosen = colorSelected;
-        newItem.sizeChosen = sizeSelected;
-        newItem.amount ++;
-        cart.push(newItem);
+        //Finn totalsummen for alle varer
+        findTotal();       
     }
 }
-  
-    //Identifiser produkt og push det inn i cart-arrayet
-    
-    // for (let i=0; i<products.length; i++) {
-    //    // console.log(i);
-        
-    //     for (let j = 0; j<cart.length; j++) {
-    //         //console.log(cart[j]);
-    //     }
-
-
-
-    //     if (products[i].id == b_id && cart.includes(i) == false) {
-    //         newItem = products[i];
-    //         newItem.amount ++;
-    //         cart.push(newItem);
-    //         //console.log("Der ble den valgt");
-    //     } else {
-    //         //alert("Denne varen ligger allerede i handlekurven");
-    //         //console.log("Denne ligger her fra før");
-    //         //document.querySelector(".alert").innerHTML = `<h4>Denne varen har du allerede valgt </h4>`
-    //     }
-    // }
-            
-    // for (let j=0; j<cart.length; j++) {
-            
-    // }
-
-    //Vis cart-arrayet i handlekurven
-    showInCart();
-
-    //Finn totalsummen for alle varer
-    findTotal();       
-    //Opprett eventlisteners til buttons
-   console.log(cart);
-}
-}
-
 
 //Legg til lytter på kjøp-knappene
 addEventButton();
@@ -103,9 +69,6 @@ const showInCart = (clr) => {
     //Tøm htmlen for elementer som ligger der fra før
     document.getElementById("new_item").innerHTML = "";
 
-
-    let handlekurv = document.getElementById("cartH3");
-    
     //Vis antall varer i handlekurven
     if (cart.length >= 0) {
         document.getElementById("number_items").innerHTML = `<p>(${cart.length}) varer</p>`;
@@ -123,15 +86,12 @@ const showInCart = (clr) => {
         }   
     }
 
-    //Oppretter ny html i handlekurven
+    //Opprett ny html i handlekurven
     cart.forEach((el, i) => {
 
         //henter amounten til produktet
         let value = el.amount;
-        //let color = el.colorChosen;
-        let colorTranslated = hexToClr(colorSelected);
-        //console.log(colorTranslated);
-
+        
         document.getElementById("new_item").innerHTML += `
         <div class="item_wrap" id="item_wrap${el.id}">
         <div id="item" class="item">
@@ -153,14 +113,12 @@ const showInCart = (clr) => {
 
     //Oppretter lyttere for remove-ikonet
     let fjernKnapper = document.querySelectorAll(".remove");
-       
     for (const fjernKnapp of fjernKnapper) {
         fjernKnapp.addEventListener("click", removeFromCart);
     }
 
     //Oppretter lyttere for input-feltene
     let inp = document.querySelectorAll(".num_items");
-       
     for (const i of inp) {
         i.addEventListener("input", updatePrice);
     }

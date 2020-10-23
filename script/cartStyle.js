@@ -3,16 +3,14 @@ let handlekurv = document.getElementById("cart_section");
 let overlay = document.getElementById("overlay");
 let remove = document.getElementById("removeCart");
 
-let erTrykket = true;
 
 //VISER HANDLEKURVEN
 const seeCart = () => {
-    if (erTrykket === true) {
+   
         handlekurv.style.display = "block";
         handlekurv.style.right = "0";
         overlay.style.backgroundColor = "rgba(0, 0, 0, 0.5)"
         overlay.style.zIndex = "0";
-    } 
 }
     
 //------------------------------------------------------------    

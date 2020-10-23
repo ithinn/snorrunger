@@ -3,20 +3,6 @@
 let clr_icon = "";
 let prod = "";
 
-//-----------------------------------------------------------------------------
-
-//ADD COLOR TO THE POPUP-PAGE
-const drawColors = (array) => {
-    let fargesymboler = "";
-    for (let i = 0; i<array.length; i++) {
-        fargesymboler += `
-        <div class="clr_small" style="background-color: ${array[i]}; border: none"></div>
-        `
-    }
-    return fargesymboler;
-}
-
-//--------------------------------------------------------------------------------
 
 //ADD ALL PRODUCTS TO THE SITE
 const addObjects = (array) => {
@@ -32,7 +18,6 @@ const addObjects = (array) => {
 
         html += `
         <article id="${array[i].id}"class="product box">
-        <div id="prod_overlay"></div>
         <div class="img_wrap">
             <img id=img_${i} class="product_img" src="${array[i].url[0]}" alt="Foto av ${array[i].cathegory_main} med produktnavn ${array[i].name}" onmouseover="this.src='${array[i].url[1]}'" onmouseout="this.src='${array[i].url[0]}'">
         </div>
@@ -51,18 +36,4 @@ const addObjects = (array) => {
     document.getElementById("products-grid").innerHTML = html;
 }
 
-
-//----------------------------------------------------------------------------------------
-//Kaller filterfunksjonene slik at det kommer opp alternativer i filterseksjonen
 addObjects(products);
-// addUnderCat(products);
-// addSizes(products);
-// addAttribute(products);
-// addColor(products);
-    
-
-//Legger til lyttere 
-// addEventTag_cat();
-// addEventProd();
-// addEventClr();
-

@@ -1,6 +1,5 @@
 //LAGER LYTTERFUNKSJONER FOR LYTTERE SOM BRUKES FLERE STEDER
 
-
 //FILTER-TAGER - LEGGER TIL FILTER 
 const addEventTag_cat = () => {
     let c_tags = document.querySelectorAll(".tag");
@@ -22,7 +21,7 @@ const addEventButton = () => {
     let buttons = document.querySelectorAll(".btn_submit");
     for (const button of buttons) {
     button.addEventListener("click", seePopUp);
-}
+    }
 }
 
 

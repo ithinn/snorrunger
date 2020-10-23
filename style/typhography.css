@@ -1,23 +1,23 @@
 @font-face {
     font-family: "Open Sans";
-    src: url("../fonts/OpenSans-Bold.ttf") format(truetype);
-    src: url("../fonts/OpenSans-Regular.ttf") format(truetype);
-    src: url("../fonts/OpenSans-Light.ttf") format(truetype);
+    src: url("../fonts/woff/OpenSans-Regular.woff") format(woff);
 }
 
 @font-face {
-    font-family: "Exo 2";
-    src: url("../fonts/Exo2-Regular.ttf") format(truetype);
-    src: url("../fonts/Exo2-Light.ttf") format(truetype);
+    font-family: "Exo2-Bold";
+    src: url("../fonts/woff/Exo2-Bold.woff") format(woff);  
+}
+@font-face {
+    font-family: "Exo2-Regular";
+    src: url("../fonts/woff/Exo2-Regular.woff") format(woff);  
 }
 
 html {
     font-family: "Exo 2";
-    color: #2F3659;
-    
+    color: #2F3659;  
 }
 
-h1, .banner_text {
+h1 {
     font-size: 7rem;
 }
 
@@ -26,7 +26,7 @@ h2, .nav_text {
     font-weight: 500;
 }
 
-h3, .menu_text{
+h3 {
     font-size: 3rem;
     font-weight: 500;
 }
@@ -35,11 +35,11 @@ h4 {
     font-size: 2rem;
 }
 
-p, .footer_p, .footer_heading, label  {
+p, .footer_p, .footer_heading, label, .tag   {
     font-family: "Open Sans";
 }
 
-button p {
+.tag {
     font-weight: 400;
 }
 
@@ -47,13 +47,11 @@ p, label {
     font-size: 2rem;
 }
 
-.nav_text:hover {
-    color: #73434B;
-    text-decoration: underline;
-    cursor: pointer;
+.radio_clr, .tag {
+    font-size: 1.8rem;
 }
 
-.footer_p, .footer_heading {
+.footer_p, .footer_heading, .clr_radio {
     font-size: 1.4rem;
     color: white;
 }
@@ -62,19 +60,9 @@ p, label {
     font-weight: 800;
 }
 
-.banner_text {
-    color: white;
-}
-
 button {
     font-family: "Open Sans";
     font-weight: 500;
-}
-
-#item_wrap {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
 }
 
 .item_heading {
@@ -86,3 +74,6 @@ button {
     font-style: italic;
 }
 
+input {
+    font-family: "Exo 2";
+}

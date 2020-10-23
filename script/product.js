@@ -8,19 +8,16 @@ let clrChosen;
 //---------------------------------------------------------------------------- 
 
 //OPPRETT POPUP-VINDU MED DETALJVISNING
-let klikk=true;
-const seePopUp = (evt) => {
 
-    let id = evt.target.id;
+const seePopUp = (evt) => {
     
-    if (klikk === true) {
-        popUp.style.opacity = "1";
-        popUp.style.right = "10%";
-        popUp.style.top = "30em";
-        overlay.style.backgroundColor = "rgba(0, 0, 0, .5)";
-        overlay.style.zIndex = "0";
-    }
-    klikk = !klikk;
+    let id = evt.target.id;
+   
+    popUp.style.opacity = "1";
+    popUp.style.right = "10%";
+    popUp.style.top = "30em";
+    overlay.style.backgroundColor = "rgba(0, 0, 0, .5)";
+    overlay.style.zIndex = "0";
 
     let html="";
     let fargesymbol = "";
@@ -56,10 +53,10 @@ const seePopUp = (evt) => {
             </article>
         </div>
 
-        <div id="columnX">
-        <img src="../images/icons/x.png" class="remove_popup icon" id="det_remove">
+        
         
         <div id="column2">
+        <img src="../images/icons/x.png" class="remove_popup icon" id="det_remove">
             
             <article id="description">
                 <h1 id="product_heading">${e.name}</h1>
@@ -82,7 +79,7 @@ const seePopUp = (evt) => {
             fargesymbol += 
             `
             <input id="colorButton${i}" type="radio" name="chooseClr">
-            <label class="clr_radio clr_large" data-colorcode="${el}" for="colorButton${i}" style="background-color: ${el}; color: #ffffff; display=flex; align-items: center; justify-content: center;"><p class="labelP">${hexToClr(el)}</p></label>
+            <label class="clr_radio clr_large" data-colorcode="${el}" for="colorButton${i}" style="background-color: ${el}; color: #ffffff;">${hexToClr(el)}</label>
             `;
         })
             
@@ -91,8 +88,8 @@ const seePopUp = (evt) => {
                     <div class="size_wrap">` 
         str.forEach((el, i) => {
             størrelser += `
-            <input type="radio" id=${i} name="chooseSize">
-            <label class="size_tag" data-size="${el}" for ${i}><p class="labelP">${el}</p></label>
+            <input type="radio" id="size_${i}" name="chooseSize">
+            <label class="size_tag" data-size="${el}" for="size_${i}">${el}</label>
             `;
         }) 
         
@@ -110,13 +107,11 @@ const seePopUp = (evt) => {
     clr_details.innerHTML = fargesymbol;
     size_details.innerHTML = størrelser;
     buy.innerHTML = buyThis;
-
     
     //Lytter for kjøp-knappen
     let btnId = "btn_" + id;
     let buyButton = document.getElementById(btnId);
     buyButton.addEventListener("click", addToCart);
-    //buyButton.addEventListener("click", checkChart);
 
     //Lytter for farge-knappene
     let clr_radio = document.querySelectorAll(".clr_radio");
@@ -132,14 +127,14 @@ const seePopUp = (evt) => {
 
     //Lytter for fjern-popup
     fjern = document.getElementById("det_remove");
-    fjern.addEventListener("click", removeDetail);
+    fjern.addEventListener("click", removePopUp);
     addEventButton();   
 }
 
 //-----------------------------------------------------------------------------
 
 //FJERNER POPUP-VINDU
-const removeDetail = () => {
+const removePopUp = () => {
         popUp.style.opacity = ".5";
         popUp.style.right = "200em";
         popUp.style.top = "30em";
@@ -150,31 +145,26 @@ const removeDetail = () => {
 //HENTER FARGEN BRUKEREN HAR VALGT OG SENDER DEN TIL HANDLEKURVEN(?)
 const getColorFromButton = (evt) => {
     
-    // let value = evt.target.value;
-    
     colorSelected = hexToClr(evt.target.dataset.colorcode);
-    
-    
-   
-    console.log(colorSelected);
-
-    //products.colorChosen = evt.target.dataset.colorcode;
-   
-    //document.querySelector(".alert").innerHTML = "";
-    //evt.target.style.border = "4px solid blue";
-    //document.getElementById(colorSelected).style.border = "5px solid black";
     return hexToClr(evt.target.value);
-    //colorSelected;
 }
 
 //---------------------------------------------------------------------------------
 
 //HENTER STØRRELSEN BRUKEREN HAR VALGT OG SENDER DEN TIL HANDLEKURVEN(?)
 const getSizeFromButton = (evt) => {
-    //let id=evt.target.innerText;
-    document.querySelector(".alert").innerHTML = "";
+  
     sizeSelected = evt.target.dataset.size;
-    console.log(sizeSelected);
-    //document.getElementById(sizeSelected).style.backgroundColor = "#A6831B";
     return sizeSelected;
+}
+
+//LEGG TIL FARGER I POPUP-VINDUETS FARGESYMBOLER
+const drawColors = (array) => {
+    let fargesymboler = "";
+    for (let i = 0; i<array.length; i++) {
+        fargesymboler += `
+        <div class="clr_small" style="background-color: ${array[i]}; border: none"></div>
+        `
+    }
+    return fargesymboler;
 }

@@ -1,26 +1,7 @@
+/*Header - øverste del*/
 header {
     width: 100%;
     height: 30em;
-    
-    
-}
-
-
-
-#inp_search {
-    font-family: "Exo 2";
-    font-size: 3rem;
-    border: none;
-    border-bottom: 4px solid #2F3659;
-    color: #2F3659;
-    background-color: #f9f9f8;
-    width: 50%;
-}
-
-#search {
-    width: 5em;
-    height: 5em;
-    margin-right: 3em;
 }
 
 #header_top {
@@ -45,6 +26,8 @@ header {
     margin-right: 5em;
 }
 
+
+/*Søkeseksjonen*/
 nav {
     height: 20em;
     display: flex;
@@ -61,20 +44,36 @@ nav {
     justify-content: center;
 }
 
-nav ul{
-    list-style: none;
+#inp_search {
+    font-family: "Exo 2";
+    font-size: 3rem;
+    border: none;
+    border-bottom: 4px solid #2F3659;
+    color: #2F3659;
+    background-color: #f9f9f8;
+    width: 50%;
 }
 
-nav ul li {
-    display: inline;
-    padding: .5em;
+#search {
+    width: 5em;
+    height: 5em;
+    margin-right: 3em;
 }
 
 
+/*Footer*/
 footer {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: 1fr;
+    background-color: #73434B;
+    height: 300px;
+    margin-top: 30px;
+}
+
+.footer_ul {
+    list-style-type: none;
+    line-height: 28px;
 }
 
 .foot_article {
@@ -103,7 +102,6 @@ footer {
 #btn_small {
     top: 4.5em;
     right: 0;
-   
 }
 
 #news_wrap {
@@ -118,5 +116,4 @@ footer {
     width: 23vw;
     align-self: center;
     text-align: center;
-
 }

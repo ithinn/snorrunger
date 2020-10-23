@@ -12,20 +12,14 @@ html {
 body {
     display: flex;
     flex-direction: column;
-    
-    
-    
+    background-color: #f9f9f8;
 }
 
-main {
-    flex: 1 0 auto;
+section {
+    margin-bottom: 5em;
 }
 
-footer {
-    flex-shrink: 0;
+article {
+    margin-bottom: 2em;
 }
 
-.footer_ul {
-    list-style-type: none;
-    line-height: 28px;
-}

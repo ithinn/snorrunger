@@ -1,30 +1,28 @@
 const input = document.getElementById("inp_search");
 const val = input.value;
-console.log(typeof(val));
 
+//FINN PRODUKTENE BASERT PÅ INPUT-FELTETS VERDI
 const findProducts = (product, name) => {
     
     const productReturned = product.filter(el => {
         return el.cathegory_main.toLowerCase() === name.toLowerCase() || el.name.toLowerCase() === name.toLowerCase() || el.cathegory_under.toLowerCase() === name.toLowerCase(); 
-        //|| name.toLowerCase() === el.name.startsWith(name.toLowerCase()); 
+        
     })
     addObjects(productReturned);
     addEventButton();
-    
     return productReturned
 }
 
-
-const funksjon = () => {
-    
+//KALLER FIND PRODUCTS(?) OG LEGGER INN INPUT.VALUE SOM ARGUMENT
+const inputValueInn = () => {
     console.log(findProducts(products, input.value));
 }
-input.addEventListener("input", funksjon) 
+
+//Lytter for search-input
+input.addEventListener("keyup", inputValueInn); 
 
 
-
-
-//Bla gjennom ulike søkeord i inputfeltet
+//BLA GJENNOM DE ULIKE SØKEORDENE I SØK-FELTET
 const søkeord = ["jakker", "bukser", "regnbukse", "skalljakke", "overtrekksbukse", "fleece"];
 let i = 0;
 
